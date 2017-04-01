@@ -6,3 +6,5 @@ research.
 It is based on Angular 1.x, HTML5, CSS3 with less, PHP, and MySQL. The user paradigm is a double-click on a name displays 
 more information and drag-and-drop files to add to the web app.
 
+To view the web app content, login as 'Guest'. You can view all the content, but will not be able to save changes.
+
