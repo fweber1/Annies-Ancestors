@@ -1,0 +1,6 @@
+<div ng-show="vm.createdList.length>0" class="dropDiv" layout-padding dragall thedata="page" id="dragme0">
+	<h3>Entered During This Session</h3>
+	<div ng-repeat="item in vm.createdList" layout="column">
+		<div id="drop0{{$index}}" ng-mouseover="vm.setTag0()" class="item" ng-mouseleave="vm.clearTag0()" thedata="name,{{item.fullName}},{{item.mainID}}" dragall ng-dblClick="vm.showDetails2($index)" style="margin:10px" class="personTag"><img class="avatar" back-Img-Comm={{item.mainID}}>{{item.fullName}}</div>
+	</div>
+</div>

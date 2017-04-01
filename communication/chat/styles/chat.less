@@ -1,0 +1,72 @@
+@import "theme.less";
+
+/*
+   ------------------CHAT-------------------
+  __________________________________________
+  |            |                            |
+  |            |     ONLINE-USER-LIST       | 
+  |            |____________________________|
+  |            |                            |
+  |            |       MESSAGE-LIST         |
+  |            |   ______________________   |
+  |   FRIEND   |  |    MESSAGE-ITEM     |   |
+  |    LIST    |  |_____________________|   |
+  |            |____________________________|
+  |            |      TYPING-INDICATOR      | 
+  |            |____________________________|
+  |            |                            |
+  |            |       MESSAGE-FORM         |
+  |____________|____________________________|
+   CHAT-SIDEBAR          CHAT-MAIN
+
+*/
+
+html, body, div#main-view{
+    height:100%;
+
+    background: @base-color; 
+
+    @start-color: @base-color;
+    @end-color: darken(@base-color, 15%);
+
+    background: @start-color; /* Old browsers */
+    background: -moz-linear-gradient(top,  @start-color 0%, @end-color 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top,  @start-color 0%,@end-color 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom,  @start-color 0%,@end-color 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr=@start-color, endColorstr=@end-color,GradientType=0 ); /* IE6-9 */
+
+}
+
+
+.chat {
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+  background-color: white;
+}
+
+.chat-sidebar {
+
+  display: flex;
+  flex-direction: column; 
+  flex: 1 0 10em; 
+  background-color: @base-color-dark2;
+}
+
+.chat-main {
+  display: flex;
+  flex-direction: column;
+  flex: 10 0 10em;  
+}
+
+
+
+/* -----------------------OTHERS----------------- */
+
+.chip {
+ font-style: italic;
+}
+
+i.material-icons{
+  line-height: inherit;
+}

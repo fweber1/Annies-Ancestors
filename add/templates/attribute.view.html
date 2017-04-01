@@ -1,0 +1,24 @@
+<!-- ***********************************************************************
+
+	 Event card finished, no styles, 2/6/2017
+	 
+	 *********************************************************************** 
+-->
+	 
+<div ng-cloak class="my-subcard" flex="75" layout-padding layout="row">
+	<form ng-submit="vm.onSubmit2()" id="theForm2" name="theForm2" novalidate>
+		<fieldset>			
+			<legend>{{vm.data.selectedType.label}} Data for <span drop="nameDrop2;" class="bin" ng-dblClick="vm.showDetails2($index)" id="curUser2" dropall>{{vm.person.fullName}}</span></legend>
+			<div style="width:900px" layout-padding>
+					<div style="width:900px" layout-padding>
+			 			<div ui-view="attributeDates" autoscroll="false" layout-fill></div>
+					   	<div class="my-required">*Required</div>
+		 				<div ui-view="attributePlaces" autoscroll="false"></div>
+				 	</div>
+				 	<div ui-view="attributeButtons" autoscroll="false"></div>
+			</div>	
+		</fieldset>
+	</form>
+	
+	<div ui-view="attributeCreatedList" autoscroll="false"></div>
+</div>

@@ -1,0 +1,40 @@
+<!-- ***********************************************************************
+
+	 Event card finished, no styles, 2/6/2017
+	 
+	 *********************************************************************** 
+-->
+	 
+<div ng-cloak class="my-subcard" flex="75" layout-padding layout="row">
+	<form ng-submit="vm.onSubmit3()" id="theForm3" name="theForm3" novalidate>
+		<fieldset>			
+			<legend>{{vm.data.selectedType.label}} Data for 
+				<span drop="nameDrop3" class="bin" ng-dblClick="vm.showDetails3($index)" id="curUser3" dropall>
+					{{vm.data.fullName}} and Spouse {{vm.data.spouse}}
+					<select ng-model="vm.data.spouse" ng-options="item as item.fullName for item in vm.spouses track by item.mainID"></select>				
+				</span>
+			</legend>
+			<div style="margin-left:30px;margin-bottom:20px;font-size:18px"> 
+				with Spouse: 
+				<span drop="nameDrop3a" class="bin curUser" ng-dblClick="vm.showDetails3($index)" id="curUser3a" dropall>
+					{{vm.data.spouse}}
+				</span>			
+				<i style="margin-left:10px" class="material-icons" ng-click="vm.searchPage()">search</i>
+				<md-tooltip style="margin-left:-120px;margin-top:-30px" md-direction="bottom">
+     					Search Database for Existing Person
+   				</md-tooltip>				
+				
+			</div>
+			<div style="width:900px" layout-padding>
+				<div style="width:900px" layout-padding>
+		 			<div ui-view="marriageDates" autoscroll="false" layout-fill></div>
+				   	<div class="my-required">*Required</div>
+	 				<div ui-view="marriagePlaces" autoscroll="false"></div>
+			 	</div>
+			 	<div ui-view="marriageButtons" autoscroll="false"></div>
+			</div>	
+		</fieldset>
+	</form>
+	
+	<div ui-view="marriageCreatedList" autoscroll="false"></div>
+</div>		

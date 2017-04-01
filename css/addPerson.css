@@ -1,0 +1,65 @@
+.curUser:hover {
+    cursor: pointer;
+}
+
+.curUser {
+	white-space:nowrap
+}
+
+.hide-dz {
+	visibility:hidden;
+	display:none;
+}
+
+ md-datepicker {
+    position: relative;
+    overflow:visible;
+    left: 20px;
+ }
+ 
+.md-datepicker input-container{
+  margin-left: 0;
+}
+.md-datepicker-button.md-icon-button {
+  margin-right: 0;
+}
+  
+md-grid-tile input {
+  	margin-left:30px;
+}
+  
+md-grid-tile select {
+   	margin-left:30px
+}
+
+.up30 {
+   	margin-top:-30px
+}
+
+.up15 {
+	margin-top:-15px	
+}
+
+.down30 {
+   	margin-top:30px
+}
+
+.md-select-placeholder {
+	margin-top:-5px;
+	margin-left:5px;
+	width:200px;
+}
+
+md-input-container textarea {
+	width:550;
+	position:relative;
+	left:30px;
+}
+
+.addButtons {
+	margin:40px;
+}
+
+md-input-container label {
+	margin-left:30px;
+}

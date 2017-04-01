@@ -1,0 +1,53 @@
+<div style="padding-left:20px">
+	<md-content class="md-padding">
+		<div>
+			<div class="module__title">
+			<h3>{{vm.title}}</h3>
+			</div>
+		</div>
+			
+		<div layout="row" layout-align="start center" flex="100">
+			<div layout="row" layout-align="start center" flex>
+				You have {{vm.theMess.length}} messages
+			</div>
+			
+			<div droppable drop="emailDrop" layout="row" layout-align="end center" flex="5">
+				<md-button style="font-size:48px;width:60px;height:60px" class="md-icon-button logo">
+					<i style="font-size:48px;width:60px;height:60px" class="material-icons">delete</i>
+				</md-button>
+			</div>
+		</div>
+		 
+		<div id="emailRead" class="transformable" ng-show="vm.emailRead">
+			<div class="transformable" layout="row" layout-align="center start">
+				<div>	
+					<table ng-table="vm.emailParams" class="table table-bordered" show-filter="true">
+					<tr id="emailDrag{{$index}}" draggable="true" ng-repeat="message in $data">
+						<td title="Avatar"><img class="avatar" back-Img-Comm="{{message.mainID}}" ></td>
+							<td title="'From'" filter="{from:'text'}" sortable="'from'">
+						 		<p ng-class="row-width" ng-dblclick="vm.goToMessage(message.id)">{{message.from}}<p></td>
+					<td title="'Date'" filter="{date:'text'}" sortable="'date'" data-header-class="row-width">
+					 	<p ng-dblclick="vm.goToMessage(message.id)"> {{message.date | date: 'dd/MM/yyyy'}}<p></td>
+					<td title="'Subject'" filter="{subject:'text'}" sortable="'subject'" data-header-class="row-width">
+					 	<p ng-dblclick="vm.goToMessage(message.id)"> {{message.subject}}<p></td>
+					</tr>
+					</table>
+				</div>
+	 
+			<div style="text-align:center;margin-left:20px;width:300px">	 
+				<h3>Receipient List</h3>
+				<div id="receipents" class="receipent">
+					<md-list layout="column">
+						<md-list-item ng-repeat="item in vm.globalList">							
+							<div id="list{{$index}}" class="md-list-item-text">
+							<img class="avatar" back-Img-Comm="{{item.mainID}}">	
+							{{item.givenName}} {{item.middleName}} {{item.surname}}
+							 </div>
+					</md-list-item>
+					</md-list>	
+				</div>
+			</div> 
+		</div>
+	</div>
+</md-content>
+</div>

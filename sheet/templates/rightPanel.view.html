@@ -1,0 +1,89 @@
+<div ng-show="vm.rightPerson.mainID>0" layout="column" layout-align="center center">
+	<div layout="row" layout-align="center center">
+		<img ng-src="/sheet/profilePhotos/{{vm.rightPerson.mainID}}.jpeg" height="174" width="255" />
+	</div>
+	<h3 layout="row" layout-align="center center" flex="100">
+		<span ng-class="{textFit:true, private:vm.leftPerson.doBlur}" ng-dblclick="vm.showDetails(vm.ids.person2)">{{vm.rightPerson.fullName}}&nbsp;</span>
+		<span ng-show="vm.rightPerson.numSpouse>1">
+			<md-menu md-offset="10 10">
+				<span class="curUser"><i class="material-icons" ng-click="$mdOpenMenu($event)">favorite</i></span>
+							
+				<md-menu-content>
+					<div ng-repeat="x in vm.rightPerson.spouses" class="md-subhead">
+						<md-menu-item>
+							<md-button ng-class="{private:x.living}" ng-disabled="disableSpouse(x.mainID);" ng-click="updateSpouse($index)">{{x.fullName}}</md-button>
+						</md-menu-item>
+					</div>									
+ 				</md-menu-content>
+			</md-menu>
+		</span>					
+	</h3>
+	
+	<div class="md-title">Parents</div>
+
+	<div class="md-subhead" layout="row" layout-align="center center">							
+		<div class="md-subhead" layout="column" layout-align="start end">							
+			<span>Father:&nbsp;</span>
+			<span>Mother:&nbsp;</span>
+		</div>
+		<div class="md-subhead" layout="column" layout-align="start start">							
+			<span ng-dblclick="vm.showDetails(vm.ids.father2)">{{vm.rightPerson.fathers[0].fullName}}</span>						
+			<span ng-dblclick="vm.showDetails(vm.ids.mother2)">{{vm.rightPerson.mothers[0].fullName}}</span>				
+		</div>
+	</div>
+
+	<div class="md-title">Birth Data</div>
+
+	<div layout="row" layout-align="start start">							
+		<div class="md-subhead" layout="column" layout-align="end end">
+			<div>Born:&nbsp;</div>
+			<div>County:&nbsp;</div>
+			<div>Country:&nbsp;</div>
+		</div>
+		<div class="md-subhead" >
+			<div ng-class="{textFit:true, private:vm.rightPerson.doBlur}">{{vm.rightPerson.birthDate}} </div>						<!--	trailing spaces necessary to fix alignment if value is blank-->
+			<div ng-class="{textFit:true, private:vm.rightPerson.doBlur}">{{vm.rightPerson.birthCounty}} </div>
+			<div ng-class="{textFit:true, private:vm.rightPerson.doBlur}">{{vm.rightPerson.birthCountry}} </div>
+		</div>
+		
+		<div class="md-subhead" layout="column" layout-align="end end">
+			<div>Hospital:&nbsp;</div>
+			<div>City:&nbsp;</div>
+			<div>State:&nbsp;</div>
+		</div>	
+		<div class="md-subhead" >
+			<div ng-class="{textFit:true, private:vm.rightPerson.doBlur}">{{vm.rightPerson.birthLocation}} </div>
+			<div ng-class="{textFit:true, private:vm.rightPerson.doBlur}">{{vm.rightPerson.birthCity}} </div>
+			<div ng-class="{textFit:true, private:vm.rightPerson.doBlur}">{{vm.rightPerson.birthState}} </div>
+		</div>
+	</div>
+
+	<div class="md-title" ng-show="vm.rightPerson.living=='Y'">Still Living</div>
+
+	<div class="md-title" ng-hide="vm.rightPerson.living=='Y'">Death Data</div>
+	<div ng-class="{hideDeath:vm.rightPerson.living=='Y'}" layout="row" layout-align="start start">							
+		<div class="md-subhead">
+			Died:&nbsp;<br>
+			County:&nbsp;<br>
+			Country:&nbsp;
+		</div>
+		
+		<div class="md-subhead">
+			<div ng-class="{textFit:true, hideDeath:vm.rightPerson.doBlur}">{{vm.rightPerson.deathDate}} </div>						<!--	trailing spaces necessary to fix alignment if value is blank-->
+			<div ng-class="{textFit:true, hideDeath:vm.rightPerson.doBlur}">{{vm.rightPerson.deathCounty}} </div>
+			<div ng-class="{textFit:true, hideDeath:vm.rightPerson.doBlur}">{{vm.rightPerson.deathCountry}} </div>
+		</div>
+		
+		<div class="md-subhead" layout="column" layout-align="end end">
+			<div>Buried:&nbsp;</div>
+			<div>City:&nbsp;</div>
+			<div>State:&nbsp;</div>
+		</div>		
+		<div class="md-subhead" >
+			<div ng-class="{textFit:true, hideDeath:vm.rightPerson.doBlur}">{{vm.rightPerson.deathLocation}} </div>
+			<div ng-class="{textFit:true, hideDeath:vm.rightPerson.doBlurg}">{{vm.rightPerson.deathCity}} </div>
+			<div ng-class="{textFit:true, hideDeath:vm.rightPerson.doBlur}">{{vm.rightPerson.deathState}} </div>
+		</div>
+	</div>	
+</div>
+		

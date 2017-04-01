@@ -1,0 +1,25 @@
+<div class="my-card" style="height:700px">
+	
+	<md-toolbar class="md-accent my-page-header">
+		<div flex flex-fill layout="row" layout-align="center center">Add a New Person to {{vm.params.appName}}</div>
+	</md-toolbar>
+
+	<md-tabs md-dynamic-height md-border-bottom md-swipe-content md-selected="rs.addSelectedTab" md-no-select-click>	 
+		<md-tab label="Name"></md-tab>
+ 		<md-tab label="Events"></md-tab>
+ 		<md-tab label="Attributes"></md-tab>
+ 		<md-tab label="Marriages"></md-tab>
+		<md-tab label="Stories"></md-tab>
+ 		<md-tab label="Media"></md-tab>
+ 		<md-tab label="Family"></md-tab>
+ 	</md-tabs>
+ 	
+<div ui-view="addName" ng-show="rs.addSelectedTab==0" autoscroll="false"></div>
+<div ui-view="addEvents" ng-show="rs.addSelectedTab==1" autoscroll="false"></div>
+<div ui-view="addAttributes" ng-show="rs.addSelectedTab==2" autoscroll="false"></div>
+<div ui-view="addMarriages" ng-show="rs.addSelectedTab==3" autoscroll="false"></div>
+<div ui-view="addStories" ng-show="rs.addSelectedTab==4" autoscroll="false"></div>
+<div ui-view="addMedia" ng-show="rs.addSelectedTab==5" autoscroll="false"></div>
+<div ui-view="addFamily" ng-show="rs.addSelectedTab==6" autoscroll="false"></div>
+ 	
+</div>

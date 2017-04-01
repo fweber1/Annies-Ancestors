@@ -1,0 +1,82 @@
+<fieldset style="margin-top:-30px">
+	<legend>More Data</legend>
+	
+	<div layout="row" layout-align="start center" layout-padding style="margin-top:-50px;margin-bottom:-50px">
+<!--		<div flex="10">
+			<select name="dateMod" ng-model="dateModifierValue" ng-options="item.value as item.label for item in dateModifiers"></select>
+		</div>
+		
+		<div flex></div>		
+		<div flex="15" ng-if="dateModifierValue!='BET'" layout-padding layout="column" layout-align="start start" style="padding-top:30px">  
+			<md-input-container>
+				<label>yyyy-mm-dd</label>
+				<input name="nameDate1" aria-label="Name Date" size="10" ng-model="addUser[0].nameDate1">
+				<div ng-messages="newPerson.nameDate.$error">
+					<div ng-message="pattern">Must be a date styled as 'yyyy-mm-dd'</div>
+				</div>
+			</md-input-container>
+		</div>
+		
+		<div flex="15" ng-if="dateModifierValue=='BET'" layout-padding layout="column" layout-align="start start" style="padding-top:30px">  
+			<md-input-container>
+				<label>yyyy-mm-dd</label>
+				<input name="nameDate1" aria-label="Start Date" size="10" ng-model="addUser[0].nameDate1">
+<!--						<div ng-messages="newPerson.nameDate.$error">
+							<div ng-message="pattern">Must be a date styled as 'yyyy-mm-dd'</div>
+						</div>
+			</md-input-container>
+			<div style="margin-top:-55px">
+				<p>And</p>
+				<div style="margin-top:-20px">
+					<md-input-container>
+						<label>yyyy-mm-dd</label>
+						<input name="nameDate2" aria-label="End Date" size="10" ng-model="addUser[0].nameDate2">
+							<div ng-messages="newPerson.nameDate2.$error">
+						 				<div ng-message="pattern">Must be a date styled as 'yyyy-mm-dd'</div>
+									</div>
+					</md-input-container>
+				</div>
+			</div>
+		</div>
+-->		
+		<div layout="row" layout-padding flex="40">
+			<div>
+				<img ng-click="showTemplateToast(qualRef)" src="/icon/Info.png" align="center" width="15" height="15">&nbsp;
+				Data&nbsp;Quality:
+			</div>
+			<div flex style="margin-top:-3px">
+				<select name="theQual" ng-model="addUser[0].theQual">
+	   				<option value="0">-</option> 				
+	   				<option value="1">1</option> 				
+	   				<option value="2">2</option> 				
+	   				<option value="3">3</option> 				
+				</select>  
+			</div>
+		</div>
+
+		<div flex></div>
+		<div flex="25" layout="column" layout-align="end start" style="margin-left:-30px;margin-top:26px">
+			<md-input-container>
+				<label>Note</label>
+				<input name="theNote" aria-label="Name Note" size=10 ng-model="addUser[0].theNote">
+			</md-input-container>						
+		</div>
+		
+		<div flex></div>
+		<div flex="25" layout="column" layout-align="end start" style="margin-left:-30px;margin-top:26px">
+			<md-input-container>
+				<label>Source</label>
+				<input name="theSource" aria-label="Name Source" ng-model="addUser[0].theSource">
+			</md-input-container>
+		</div>
+	</div>
+	
+</fieldset>	
+
+<div style="margin-bottom:30px">
+<div class="md-toolbar-tools edit-tools" layout="row" layout-align="end center" style="padding-top:50px">
+	<md-button class="md-raised md-primary" onclick="$('#toggleMeta').click()">
+			Close
+	</md-button>
+</div>
+</div>

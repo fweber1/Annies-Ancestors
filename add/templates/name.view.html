@@ -1,0 +1,87 @@
+<!-- ***********************************************************************
+
+	 Name and Profile photo card
+	 
+	 *********************************************************************** 
+-->
+
+<div ng-cloak>
+	<div ng-show="!vm.havePerson" class="my-subcard" focus-on-show="vm.setFocus" flex="80" layout-padding layout="row" layout-align="start center">
+		<form ng-submit="vm.onSubmit0()" novalidate class="up15" id="theForm0" name="theForm0" layout-fill>
+			<fieldset>			
+				<legend>Birth Name</legend>
+	 			<div ui-view="nameNames" autoscroll="false" layout-fill></div>
+			   	<div class="my-required">*Required</div>
+		 		<div ui-view="nameButtons" autoscroll="false"></div>
+			</fieldset>
+		</form>
+		
+		<div ui-view="nameCreatedList" autoscroll="false"></div>
+	</div>
+	
+	<div ng-show="vm.havePerson" flex="100" layout="row" layout-align="center center">
+		  <div id="uploadProfile0" layout="column" layout-align="center center">
+		  	<h1>Add a profile photo for {{vm.fullName}}</h1>
+		  	<form class="dz-preview" novalidate>
+			  		<div class="hide-dz">
+				  		<div class="hide-dz" id="preview-template">
+					  		<div class="hide-dz dz-preview dz-file-preview">
+								<div class=" hide-dz dz-details">
+								    <div class="hide-dz dz-filename"><span data-dz-name></span></div>
+								    <div class="hide-dz dz-size" data-dz-size></div>
+								    	<img class="hide-dz" />
+									<div class="hide-dz dz-progress"><span class="hide-dz dz-upload" data-dz-uploadprogress></span></div>
+									<div class="hide-dz dz-success-mark"><span>✔</span></div>
+									<div class="hide-dz dz-error-mark"><span>✘</span></div>
+									<div class="hide-dz dz-error-message"><span data-dz-errormessage></span></div>
+								</div>
+							</div>
+						</div>
+					</div>
+		
+				<div class="dz-message dropzoneFormat">
+			    	Drop a {{vm.data.fullName}} profile photo here.
+				</div>
+			</form>
+		</div>		
+	</div>
+</div>
+	
+<div ng-show="false" flex="70">	
+	<div class="md-dialog-container" id="nameDLOG">
+		<md-dialog> 
+			<div style="margin:15px">	
+				<div layout="row" layout-align="end start">
+					<md-button class="md-raised md-primary" ng-disabled="vm.selectedRow==-1" aria-label="Not Listed" ng-click="vm.haveMatch()">
+						Match
+					</md-button>
+		  
+		  			<md-button class="md-raised md-primary" aria-label="Use Selected" ng-click="vm.create()">
+						Create
+					</md-button>
+	
+		  			<md-button class="md-raised md-primary" aria-label="Cancel" ng-click="vm.closeDialog()">
+						Cancel
+					</md-button>
+				</div>
+			</div> 
+			<h1>{{vm.nHits}} people already exist in {{vm.params.appName}} with that name</h1>
+			<div layout="column" layout-align="center center">
+				<p>Click the row (if any) of the person you tried to add.</p>
+				<table ng-table="vm.tableParams">
+					<tr layout-padding ng-dblClick="vm.showDetails($index)" class="transformable" ng-repeat="user in $data" ng-click="vm.setSelected($index)" ng-class="{selectedRow: $index === vm.selectedRow}">
+						<td title="Avatar"><img class="avatar" back-Img-Comm="{{user.mainID}}"></td>
+						<td title="'Given&nbsp;Name'">{{user.givenName}}</td>
+						<td title="'Middle'">{{user.middleName}}</td>
+						<td title="'Surname'">{{user.surname}}</td>
+						<td title="'Gender'">{{user.gender}}</td>
+						<td ng-class="{private:user.living}" title="'Birth Date'">{{user.birthDate}}</td>
+						<td ng-class="{private:user.living}" title="'Birth City'">{{user.birthCity}}</td>
+						<td ng-class="{private:user.living}" title="'Death Date'">{{user.deathDate}}</td>
+						<td ng-class="{private:user.living}" title="'Death City'">{{user.deathCity}}</td>
+					</tr>
+				</table>
+			</div>
+		</md-dialog>
+	</div>
+</div>

@@ -1,0 +1,29 @@
+@import "theme.less";
+
+/* -------- Typing indicator box ---------- */
+
+.typing-indicator-box {
+  flex: 1;
+  margin:0;
+  min-height:45px;
+  height:45px;
+  max-height:45px;
+  background-color: @base-color-fade ;
+}
+
+.typing-indicator-box ul {
+  flex: 1;
+  flex-direction: row;
+  overflow-x:auto; 
+  flex-wrap: nowrap;
+  margin:0;
+}
+
+.typing-indicator-box img{
+  padding:4px;
+  width:45px;
+}
+
+.typing-indicator-box li{
+  display: inline-block;
+}

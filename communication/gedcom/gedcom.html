@@ -1,0 +1,29 @@
+<md-content class="md-padding">
+	<div flex="100" layout="row" layout-align="space-between start">
+		<div flex="30" id="uploadProfile">
+			<form class="dropzone needsclick" novalidate>
+				<input type="hidden" ng-model="upload.personID" name="vm.personID">
+		
+				<div class="dz-message needsclick">
+				NOTE: This feature is not implemented yet! Drop a gedcom file here to add it to {{params.appName}}. You will be notified when the conversion is complete. An email will also be sent to you.
+				</div>
+		
+			</form>
+		</div>
+		
+		<div flex></div>
+		
+		<div flex="60">
+			<p>You can also download selected portions of {{params.appName}} ancestors.</p>
+			<md-button type="button" onclick="alert('This feature is not implemented yet.')" class="md-raised md-primary" aria-label="Begin Download">
+				Begin
+			</md-button>	
+			
+<!--			<input type="file" ng-file-select="onSelectFile($files)" multiple>
+-->						
+
+		</div>
+	</div>
+	
+
+</md-content>

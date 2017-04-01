@@ -1,0 +1,26 @@
+<div ng-show="email.inuse" class="dropDiv" dragall thedata="page" id="dragme{{vm.tab}}" style="position:absolute;z-index:20;left:50px;top:50px">
+	<div style="background-color:darkBlue;text-align:right;border-top-left-radius:5px;border-top-right-radius:5px" flex="100" layout="row" layout-align="end end">
+		<span ng-click="email.inuse=false"><md-icon style="color:white">close</md-icon></span>
+	</div>
+
+<div layout="row" layout-align="center end" layout-padding>
+	<ang-accordion icon-position="right" close-icon-url="/icon/right1.png" open-icon-url="/icon/down.png" one-at-a-time="true">
+ 		<collapsible-item style="white-space:nowrap" ng-if="email.nEditors>0" item-title="{{email.nEditors}} editors use this person" initially-open="false">
+				<md-list>
+					  <md-list-item ng-repeat="item in email.editors" ng-dblClick="vm.showDetails(item.mainID)" ng-class-odd="'odd'" ng-class-even="'even'">
+					      {{item.fullName}}
+					  </md-list-item>
+				</md-list>	
+		</collapsible-item>
+		
+ 		<collapsible-item ng-show="email.ownerName!=''" class="curUser" style="white-space:nowrap" ng-if="email.ownerID>0" item-title="Person created by:" initially-open="false">
+			<md-list>
+			  	<md-list-item ng-dblClick="vm.showDetails(item.ownerID)" ng-class-odd="'odd'" ng-class-even="'even'">
+					{{email.ownerName}}.
+				</md-list-item>
+			</md-list>	
+		</collapsible-item>
+	</ang-accordion>
+	<span style="color:teal" class="curUser"><i style="margin-left:10px" class="material-icons" ng-click="email.which=1;email.showEmail=true">email</i></span>
+</div>	
+</div>

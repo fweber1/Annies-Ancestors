@@ -1,0 +1,63 @@
+<!-- ***********************************************************************
+
+	 Name and Profile photo card
+	 
+	 *********************************************************************** 
+-->
+
+<div ng-cloak>
+	<div class="my-subcard" focus-on-show="vm.setFocus1" flex="80" layout-padding layout="row" layout-align="start center">
+		<form ng-submit="vm.onSubmit0()" id="theForm0" name="theForm0" novalidate>
+			<section layout="row" layout-sm="column" layout-align="end center" layout-wrap>
+			  	<div layout="row" layout-align="start center" flex>
+					<legend id="newName">Birth Name for			
+					<span class="curUser" ng-dblClick="vm.showDetails0(vm.data.mainID)">
+						{{vm.data.fullName}} 
+					</span>
+					<span style="color:teal" class="curUser"><i style="margin-left:10px" class="material-icons" ng-click="vm.searchPage0(vm.data.mainID,'main')">search</i></span>
+					</legend>
+				</div>
+				<span flex></span>
+				<span layout-padding ng-click="vm.doAdd0()" style="color:teal" class="curUser"><i class="material-icons">person_add</i></span>
+			</section>
+			<div layout-padding>
+ 				<div ui-view="editNameNames"></div>
+			</div>
+		   	<div class="my-required">*Required</div>
+
+	 		<div ui-view="editNameButtons"></div>
+		</form>
+		
+	</div>
+	<div ui-view="editNameInuseList" autoscroll="false"></div>
+	<div ui-view="editNameShowEmail" autoscroll="false"></div>
+
+	<div class="my-subcard" flex="40" layout-padding layout="row" layout-align="start center">
+	<div flex="100" layout="row" style="height:200px" layout-align="center center">
+		  <div id="uploadProfile0" layout="column" layout-align="center center">
+		  	<h3 ng-dblClick="vm.showDetails0(vm.data.mainID)">Update the profile photo for<br> {{vm.data.fullName}}</h3>
+		  	<form class="dz-preview" novalidate>
+			  		<div class="hide-dz">
+				  		<div class="hide-dz" id="preview-template">
+					  		<div class="hide-dz" class="dz-preview dz-file-preview">
+								<div class="hide-dz dz-details">
+								    <div class="dz-filename hide-dz"><span data-dz-name></span></div>
+								    <div class="dz-size hide-dz" data-dz-size></div>
+								    	<img class="hide-dz" data-dz-thumbnail />
+									<div class="dz-progress hide-dz"><span class="dz-upload hide-dz" data-dz-uploadprogress></span></div>
+									<div class="dz-success-mark hide-dz"><span>✔</span></div>
+									<div class="dz-error-mark hide-dz"><span>✘</span></div>
+									<div class="dz-error-message hide-dz"><span data-dz-errormessage></span></div>
+								</div>
+							</div>
+						</div>
+					</div>
+		
+				<div style="height:100px" class="dz-message dropzoneFormat">
+			    	Drop a {{vm.fullName}} profile photo here.
+				</div>
+			</form>
+		</div>		
+	</div>
+</div>
+<</div>

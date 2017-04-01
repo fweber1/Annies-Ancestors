@@ -1,0 +1,27 @@
+<div class="my-card" style="height:700px">
+
+    <md-toolbar class="md-accent my-page-header">
+        <div flex flex-fill layout="row" layout-align="center center">Edit the {{vm.titles[rs.editSelectedTab]}} for
+            {{vm.data.fullName}}
+        </div>
+    </md-toolbar>
+
+    <md-tabs md-dynamic-height md-border-bottom md-swipe-content md-selected="rs.editSelectedTab" md-no-select-click>
+        <md-tab label="Name"></md-tab>
+        <md-tab label="Events"></md-tab>
+        <md-tab label="Attributes"></md-tab>
+        <md-tab label="Marriages"></md-tab>
+        <md-tab label="Stories"></md-tab>
+        <md-tab label="Media"></md-tab>
+        <md-tab label="Family"></md-tab>
+    </md-tabs>
+
+    <div ui-view="editName" ng-show="rs.editSelectedTab==0" autoscroll="false"></div>
+    <div ui-view="editEvents" ng-show="rs.editSelectedTab==1" autoscroll="false"></div>
+    <div ui-view="editAttributes" ng-show="rs.editSelectedTab==2" autoscroll="false"></div>
+    <div ui-view="editMarriages" ng-show="rs.editSelectedTab==3" autoscroll="false"></div>
+    <div ui-view="editStories" ng-show="rs.editSelectedTab==4" autoscroll="false"></div>
+    <div ui-view="editMedia" ng-show="rs.editSelectedTab==5" autoscroll="false"></div>
+    <div ui-view="editFamily" ng-show="rs.editSelectedTab==6" autoscroll="false"></div>
+
+</div>

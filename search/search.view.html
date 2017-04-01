@@ -1,0 +1,105 @@
+<div class="my-card">
+	<md-toolbar class="md-accent my-page-header" style="padding:0px;margin:0px">
+		<div flex flex-fill layout="row" layout-align="center center">
+			<div layout="column" layout-align="center center">
+				<div>Search for People in {{vm.params.appName}} Database</div>
+			</div>
+			<div style="margin-left:40px;height:30px" ng-show="vm.showReturn" layout="row" layout-align="center center">
+				<md-button ng-click="vm.returnToStart()" ng-href class="md-primary" aria-label="Return" style="margin-left:-12px">
+				 	<md-icon style="color:white;margin-left:45px;margin-top:20px">&#xE31B;</md-icon>
+				</md-button>
+				<div style="text-color:white;margin-left:-15px">Return</div>
+			</div>
+		</div>
+	</md-toolbar>
+		
+	<div class="my-subcard" flex="95">
+		<section focus-on-show="vm.setFocus">
+
+			<md-content class="md-padding">
+			 	<form ng-submit="vm.getPeople()" name="searchForm">
+			 	<h1>Search for Ancestors</h1>
+	
+					<md-checkbox ng-model="vm.soundex" aria-label="Sounds Like">
+					Include surnames that sound like the entered name
+					</md-checkbox>
+			 
+					<div layout="row" layout-align="start start">
+					
+					 	<md-input-container md-autofocus class="md-input-focused">
+							<label>Enter Surname to Search For</label>
+							<input id="surname" class="form-control firstInput" ng-change="vm.checkSurname()" type="text" ng-model="vm.data.surname" name="surname" aria-label="surname" required size="30">
+								<div ng-messages="searchForm.surname.$error">
+									<div ng-message="required">This is required!</div>
+								</div>
+						</md-input-container>
+						
+						<md-button type="submit" ng-disabled="searchForm.$invalid" class="md-raised md-primary" aria-label="Search">
+							Search
+						</md-button>							
+						
+					 </div>
+			</form>
+			 </md-content>
+		</section>
+	
+		<md-divider></md-divider>
+			
+		<section ng-show="vm.setFocus2" focus-on-show="vm.setFocus2">
+			<md-content class="md-padding">
+                <div class="transformable">
+				<div layout-gt-sm="row" layout="row" layout-align="start center">
+						
+					<span>Number of Matches: {{vm.tableParams.total()}}</span>
+		
+					<div ng-show="vm.flags.what=='main'">
+                        <md-button class="md-raised md-primary" ng-disabled="vm.selectedRow<0 || searchForm.$invalid" aria-label="Use Selected" ng-click="vm.setSelected();">
+                            Use Selected
+                        </md-button>
+                    </div>
+
+					<div ng-hide="vm.flags.what=='main'">
+						<md-button class="md-raised md-primary" ng-disabled="vm.selectedRow<0 || searchForm.$invalid" aria-label="Use Selected" ng-click="vm.addSelected();">
+							Add {{vm.flags.what}}
+						</md-button>
+						<md-button class="md-raised md-primary" ng-disabled="vm.selectedRow<0 || searchForm.$invalid" aria-label="Use Selected" ng-click="vm.replaceSelected();">
+							Replace {{vm.flags.what}}
+						</md-button>
+					</div>
+
+					<span>Current Person: {{vm.params.curPersonName}}</span>
+															
+					<div flex layout-gt-sm="row" layout="row" layout-align="end center">
+						
+						<md-button class="md-raised md-primary" aria-label="Clear Filters" ng-click="vm.tableParams.filter({});">
+							Clear Search
+						</md-button>							
+					</div>
+				</div>
+	
+				<table ng-table="vm.tableParams"class="table table-bordered" show-filter="true" >
+				<tr ng-dblClick="vm.showDetails($index)" class="transformable" ng-repeat="user in $data" ng-click="vm.setPerson($index)" ng-class="{selectedRow: $index === vm.selectedRow}">
+						<td title="Avatar"><img class="avatar" back-Img-Comm="{{user.mainID}}"></td>
+				<td ng-class="{private:user.living}" title="'Given&nbsp;Name'" filter="{ givenName: 'text'}" sortable="'givenName'">
+				{{user.givenName}}</td>
+				<td ng-class="{private:user.living}" title="'Middle'" filter="{ middleName: 'text'}" sortable="'middleName'">
+				{{user.middleName}}</td>
+				<td ng-class="{private:user.living}" title="'Surname'" filter="{ surname: 'text'}" sortable="'surname'">
+				{{user.surname}}</td>
+				<td ng-class="{private:user.living}" title="'Gender'" filter="{ gender: 'text'}" sortable="'gender'">
+				{{user.gender}}</td>
+				<td ng-class="{private:user.living}" title="'Birth Date'" filter="{ birthDate: 'text'}" sortable="'birthDate'">
+				{{user.birthDate}}</td>
+					<td ng-class="{private:user.living}" title="'Birth City'" filter="{ birthCity: 'text'}" sortable="'birthCity'">
+				{{user.birthCity}}</td>
+				<td ng-class="{private:user.living}" title="'Death Date'" filter="{ deathDate: 'text'}" sortable="'deathDate'">
+				{{user.deathDate}}</td>
+				<td ng-class="{private:user.living}" title="'Death City'" filter="{ deathCity: 'text'}" sortable="'deathCity'">
+				{{user.deathCity}}</td>
+				</tr>
+				</table>
+			</div>
+		</md-content>
+		</section>
+	</div>
+</div>

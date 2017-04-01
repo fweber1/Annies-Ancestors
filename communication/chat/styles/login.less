@@ -1,0 +1,90 @@
+@import "theme.less";
+
+.login-container {
+  
+    background: @base-color; 
+    height: 100%;
+    flex-direction: column;
+    display: flex;
+
+    @start-color: @base-color;
+    @end-color: darken(@base-color, 15%);
+
+    background: @start-color; /* Old browsers */
+    background: -moz-linear-gradient(top,  @start-color 0%, @end-color 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top,  @start-color 0%,@end-color 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom,  @start-color 0%,@end-color 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr=@start-color, endColorstr=@end-color,GradientType=0 ); /* IE6-9 */
+
+}
+
+.btn-login-github{
+  background-color: @button-color;
+  width:100%;
+}
+.btn-login-github:hover{
+  background-color: @button-color-hover ;
+  color:white;
+}
+
+.signin-card {
+  max-width: 350px;
+  border-radius: 2px;  
+  background-color: #eceff1; // Blue Grey 50
+  box-shadow: 0 10px 20px rgba(0, 0, 0, .19),
+  0 6px 6px rgba(0, 0, 0, .23); // shadow depth 3
+
+
+  position: absolute;
+  top: 20%;
+
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+
+  padding: 18px;
+  border-radius: 4px;
+  z-index: 100;
+
+}
+
+.signin-card { 
+  .logo-image, h1, p {
+    text-align: center;
+  }    
+}
+
+.subhead {
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.1;
+  color: #212121;
+  text-transform: inherit;
+  letter-spacing: inherit;
+}
+
+/*----------------- Animation .signin-card ---------------------*/
+
+.signin-card {
+  -webkit-animation: cardEnter 0.25s ease-in-out 0.5s;
+  animation: cardEnter 0.75s ease-in-out 0.5s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  opacity: 0;
+}
+
+/* ------------ card animation from Animate.css -------------- */
+
+
+
+/* ------------ Particle.js -------------- */
+
+#particles-js{
+
+  flex-direction: column;
+  display: flex;
+
+  height: 100%;
+  width:100%;
+}

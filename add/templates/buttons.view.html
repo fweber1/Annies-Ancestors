@@ -1,0 +1,40 @@
+<!--  ******************************************************
+
+    Add buttons view, no styles, finished and tested 2/6/2017
+
+	 ******************************************************
+-->
+
+<div class="edit-tools addButtons" layout="row" layout-align="center center">
+	<md-input-container>
+		<md-button ng-disabled="true" class="md-raised md-primary"  ng-disabled="true">
+			Privacy
+		</md-button>
+ 	</md-input-container>
+ 	
+ 	<md-input-container>	 	
+		<md-button ng-disabled="true" class="md-raised md-primary"  ng-disabled="true">
+			More
+		</md-button>
+	</md-input-container>
+
+	<md-input-container>
+		<md-button ng-disabled="true"  class="md-raised md-primary"  ng-disabled="true">
+			Note
+		</md-button>
+	</md-input-container>
+
+	<md-input-container>
+		<md-button class="md-raised md-primary" ng-click="vm.onReset()" ng-disabled="theForm{{vm.tab}}.$invalid">
+			Clear
+		</md-button>
+	</md-input-container>
+
+	<md-input-container>
+		<md-button type="submit" id="theSubmit" class="md-raised md-primary" ng-disabled="theForm{{vm.tab}}.$invalid"">
+			Save
+		</md-button>
+	</md-input-container>
+	
+	
+</div>

@@ -1,0 +1,35 @@
+<div ng-hide="vm.leftPerson.numSpouse>0" flex="10" flex-fill layout="column" layout-align="center center" class="md-title" layout-padding>
+	<div>No Marriage at This Time</div>
+</div>
+
+<div ng-show="vm.leftPerson.numSpouse>0" layout="column" layout-align="start center" class="midPane3" ng-dblClick="midPane3=!midPane3 || false" ng-class="{midPaneBig3:midPane3}">
+	<h2 class="md-title">Marriage</h2>
+	
+	<div layout="row" layout-align="start start" style="margin-top:30px">							
+		<div class="md-subhead" style="text-align:right" >
+			Date:&nbsp;<br>
+			County:&nbsp;<br>
+			Country:&nbsp;
+		</div>
+		<div class="md-subhead" style="text-align:left">
+			<div ng-class="{textFit:true, private:vm.middlePerson[0].living}">{{vm.middlePerson[0].birthDate}} </div>						<!--	trailing spaces necessary to fix alignment if value is blank-->
+			<div ng-class="{textFit:true, private:vm.middlePerson[0].living}">{{vm.middlePerson[0].birthCounty}} </div>
+			<div ng-class="{textFit:true, private:vm.middlePerson[0].living}">{{vm.middlePerson[0].birthCountry}} </div>
+		</div>
+		
+		<div layout="column" layout-align="left" layout-padding></div>
+		
+		<div class="md-subhead" style="text-align:right">
+			Where:&nbsp;<br>
+			City:&nbsp;<br>
+			State:&nbsp;
+		</div>
+	
+		<div class="md-subhead" style="text-align:left;">
+			<div ng-class="{textFit:true, private:vm.middlePerson[0].living}">{{vm.middlePerson[0].birthLocation}} </div>
+			<div ng-class="{textFit:true, private:vm.middlePerson[0].living}">{{vm.middlePerson[0].birthCity}} </div>
+			<div ng-class="{textFit:true, private:vm.middlePerson[0].living}">{{vm.middlePerson[0].birthState}} </div>
+		</div>
+	</div>
+
+</div>

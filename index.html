@@ -1,0 +1,218 @@
+<!doctype html>
+<html xmlns:ng="http://angularjs.org" ng-app="root">
+	
+<head>
+	<base href="/" />
+    <meta charset="utf-8" />
+	<meta http-equiv="Expires" content="Mon, 26 Jul 1997 05:00:00 GMT">
+	<meta http-equiv="Pragma" content="no-cache">
+ 	<meta http-equiv="Cache-control" content="public">
+    <meta http-equiv="Cache-control" content="private">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="Cache-control" content="no-store">	    
+    <title>Annie's Ancestors'</title>
+		
+<link type="text/css" rel="stylesheet" href="css/jquery.ui.css"></link>
+<link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/angular-material/1.1.3/angular-material.css">
+<link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
+<link type="text/css" rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.css" />
+<link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link type="text/css" rel="stylesheet" href="/css/myCSS.css"></link>
+<link type="text/css" rel="stylesheet" href="/css/addPerson.css"></link>
+<link type="text/css" rel="stylesheet" href="/css/sheet.css"></link>
+<link type="text/css" rel="stylesheet" href="/css/session.css"></link>
+<link type="text/css" rel="stylesheet" href="/css/dropzone.css"></link>
+<link type="text/css" rel="stylesheet" href="https://unpkg.com/ng-table@2.0.2/bundles/ng-table.min.css">
+<link type="text/css" rel="stylesheet" href="/css/ui-bootstrap-csp.css"></link>
+<link type="text/css" rel="stylesheet" href="/css/calendar2.css"></link>
+<link type="text/css" rel="stylesheet" href="/css/fullcalendar.print.css" media="print" ></link>
+<link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/trix/0.9.2/trix.css">
+<link type="text/css" rel="stylesheet" href="/css/ang-accordion.css">
+ 
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.0.3.min.js"></script>
+<script type="text/javascript" src="scripts/angular.js"></script>
+<script type="text/javascript" src="scripts/angular-animate.js"></script>
+<script type="text/javascript" src="scripts/angular-aria.js"></script>
+<script type="text/javascript" src="scripts/angular-messages.js"></script>
+<script type="text/javascript" src="scripts/angular-cookies.js"></script>
+<script type="text/javascript" src="scripts/angular-resource.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-filter/0.5.15/angular-filter.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-material/1.1.3/angular-material.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-loading-bar/0.9.0/loading-bar.min.js"></script>
+<script type="text/javascript" src="scripts/jquery-ui.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui/0.4.0/angular-ui.js"></script>
+<script type="text/javascript" src="scripts/ui-bootstrap.js"></script>
+<script type="text/javascript" src="scripts/ui-bootstrap-tpls.js"></script>
+<script type="text/javascript" src='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js'></script>
+<script type="text/javascript" src="https://unpkg.com/ng-table@2.0.2/bundles/ng-table.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.4.2/angular-ui-router.js"></script>
+<script type="text/javascript" src="scripts/ang-accordion.js"></script>
+ 
+<script type="text/javascript" src="scripts/ct-ui-router-extras.js"></script>
+<script type="text/javascript" src="scripts/root.js"></script>
+<script type="text/javascript" src="scripts/turn.js"></script>
+<script type="text/javascript" src="scripts/angularSlideables.js"></script>
+<script type="text/javascript" src="scripts/modernizr.2.5.3.min.js"></script>
+<script type="text/javascript" src="scripts/hash.js"></script>
+<script type="text/javascript" src="scripts/moment.js"></script>
+<script type="text/javascript" src="scripts/angular-sticky-footer.js"></script>
+<script type="text/javascript" src="scripts/dropzone.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/trix/0.9.2/trix.js"></script>
+<script type="text/javascript" src="bower_components/angular-ui-calendar/src/calendar.js"></script>
+<script type="text/javascript" src="bower_components/fullcalendar/dist/fullcalendar.min.js"></script>
+<script type="text/javascript" src="bower_components/fullcalendar/dist/gcal.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.1.0/fullcalendar.min.js"></script>
+
+
+<meta http-equiv="Cache-Control" content="private, no-cache, no-store, must-revalidate, max-age=0, proxy-revalidate, s-maxage=0 " />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="0" />
+
+</head>
+
+<body style="height:100%" flex= "100" ng-controller="root as vm" id="myController">
+ 
+	<div ui-view="header" autoscroll="false"></div>
+ 
+ <div dropall class="disable-text-selection">
+ 
+  	<div ui-view="main" autoscroll="false" flex="100"></div>
+  	
+</div>
+
+<div ng-cloak ng-if="vm.showCalendar" style="position:absolute;z-index:1;padding:20px;left:20px;width:900px;top:20px;height:700px;border:thin solid black;background-color:white">
+ 	<div ng-controller="CalendarController"> -->
+		<div id="calendar" ui-calendar="{{uiConfig.calendar}}" ng-model="eventSources"></div> -->
+	
+	<md-button type="button" class="md-raised md-primary" ng-click="vm.doCalendar()" aria-label="Close Reservations" >
+		Close
+	</md-button>
+	</div>
+</div>
+
+	<div ui-view="footer" autoscroll="false"></div>
+
+ <!-- app services -->
+
+	<script src="app-services/random.string.service.js"></script>
+	<script src="app-services/database.service.js"></script>
+	<script src="app-services/authentication.service.js"></script>
+
+<!-- utility directives, filters, factories, and constants -->
+
+  	<script src="utilities/utility.filters.js"></script>
+  	<script src="utilities/utility.directives.js"></script>
+  	<script src="utilities/utility.factory.js"></script>
+  	<script src="utilities/utility.service.js"></script>
+ 	<script src="utilities/utility.constants.js"></script>
+ 	<script src="utilities/utility.values.js"></script>
+ 	
+<!-- menu directives, filters, factories, and constants -->
+	
+	<script src="menus/dlog.controller.js"></script>
+
+<!-- communication components -->
+
+ 	<script src="communication/communication.controller.js"></script>
+    <script src="communication/communication.factory.js"></script>
+
+<!-- text chat directives and components -->
+
+    <script src="communication/chat/components/channels/channels.directive.js"></script>
+    <script src="communication/chat/services/conversation-list.service.js"></script>
+
+<!-- video chat directives and components -->
+
+	<script type="text/javascript" src="https://secure.skypeassets.com/i/scom/js/skype-uri.js"></script>
+    <script src="communication/video/video.directive.js"></script>
+    <script src="communication/video/video.controller.js"></script>
+   <script src="communication/video/calendar.controller.js"></script>
+
+<!-- individual directives, factories, and controllers -->
+
+   	<script src="communication/individual/individual.directive.js"></script>
+  	<script src="communication/individual/individual.controller.js"></script>
+ 	<script src="communication/individual/individual.factory.js"></script>
+
+<!-- text directives and controller -->
+
+   <script src="communication/text/text.directive.js"></script>
+   <script src="communication/text/text.controller.js"></script>
+
+<!-- email directives and controller -->
+
+   <script src="communication/email/email.directive.js"></script>
+   <script src="communication/email/email.controller.js"></script>
+
+<!-- gedcom directives -->
+
+   <script src="communication/gedcom/gedcom.directive.js"></script>
+
+<!-- sheet directives and controllers -->
+
+	<script src="sheet/controllers/sheet.controller.js"></script>
+	<script src="sheet/service/sheet.service.js"></script>
+	<script src="sheet/directives/sheet.directive.js"></script>
+	<script src="sheet/service/sheet.slider.service.js"></script>
+	<script src="sheet/factory/sheet.factory.js"></script>
+
+<!-- session directives, filters, and controllers -->
+
+    <script src="session/login/login.controller.js"></script>
+    <script src="session/register/register1.controller.js"></script>
+    <script src="session/register/register2.controller.js"></script>
+    <script src="session/register/register3.controller.js"></script>
+    <script src="session/email/email1.controller.js"></script>
+    <script src="session/email/email2.controller.js"></script>
+    <script src="session/password/password1.controller.js"></script>
+    <script src="session/password/password2.controller.js"></script>
+    <script src="session/password/password3.controller.js"></script>
+    <script src="session/guest/guest.controller.js"></script>
+    <script src="session/home/home.controller.js"></script>
+	<script src="session/factory/session.factory.js"></script>
+	<script src="session/directive/session.directive.js"></script>
+	<script src="session/session.service.js"></script>
+
+<!-- search directives, filters, and controllers -->
+
+	<script src="search/search.controller.js"></script>
+	<script src="search/factory/search.factory.js"></script>
+	<script src="search/service/search.service.js"></script>
+	<script src="search/filters/search.filter.js"></script>
+
+<!-- add directives, filters, and controllers -->
+
+	<script src="add/controllers/add.controller.js"></script>
+	<script src="add/controllers/add.name.controller.js"></script>
+	<script src="add/controllers/add.event.controller.js"></script>
+	<script src="add/controllers/add.marriage.controller.js"></script>
+	<script src="add/controllers/add.attribute.controller.js"></script>
+	<script src="add/controllers/add.story.controller.js"></script>
+	<script src="add/controllers/add.media.controller.js"></script>
+	<script src="add/controllers/add.family.controller.js"></script>
+	<script src="add/add.factory.js"></script>
+	<script src="add/add.directive.js"></script>
+	<script src="add/add.service.js"></script>
+
+<!-- edit directives, filters, and controllers -->
+
+	<script src="edit/controllers/edit.controller.js"></script>
+	<script src="edit/controllers/edit.name.controller.js"></script>
+	<script src="edit/controllers/edit.event.controller.js"></script>
+	<script src="edit/controllers/edit.marriage.controller.js"></script>
+	<script src="edit/controllers/edit.attribute.controller.js"></script>
+	<script src="edit/controllers/edit.story.controller.js"></script>
+	<script src="edit/controllers/edit.media.controller.js"></script>
+	<script src="edit/controllers/edit.family.controller.js"></script>
+	<script src="edit/edit.factory.js"></script>
+	<script src="edit/edit.directive.js"></script>
+	<script src="edit/edit.service.js"></script>
+
+	
+	<script src="scripts/angular-http-transform-date.js"></script>
+	<script src="/session/scripts/aes.js"></script>
+	<script src="/session/scripts/mdo-angular-cryptography.js"></script>	
+	<script src="album/album.controller.js"></script>
+
+</body>
+</html>

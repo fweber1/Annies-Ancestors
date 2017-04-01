@@ -1,0 +1,56 @@
+<!-- ***********************************************************************
+
+	 Assignment of family card
+	 
+	 *********************************************************************** 
+-->
+
+<div ng-cloak class="my-subcard" flex="75" layout="column" layout-align="center center" layout-padding>
+	<div layout-padding layout="row" layout-align="start center" ">
+		<fieldset>			
+			<legend style="padding-top:20px" id="newName"> Family Links for <span drop="nameDrop" class="bin" ng-dblClick="vm.showDetails6($index)" id="curUser6" dropall>{{vm.data.fullName}}</span></legend>
+			<div layout="row" layout-align="start start">
+				<div>
+					<h3 style="margin-top:-20px">Spouses</h3>			
+					<md-list id="target0" class="dropzoneFormat" id="drop1" dropall drop="vm.peopleDrop('drop1')">
+						<md-list-item>Drop&nbsp;Spouse&nbsp;Here</md-list-item>
+					</md-list>	
+				</div>
+				
+				<div style="padding-left:20px">
+					<h3 style="margin-top:-20px">Fathers</h3>			
+					<md-list id="target1" class="dropzoneFormat" id="drop2" dropall drop="vm.peopleDrop('drop2')">
+						<md-list-item>Drop&nbsp;Fathers&nbsp;Here</md-list-item>
+					</md-list>
+				</div>
+				
+				<div style="padding-left:20px">
+					<h3 style="margin-top:-20px">Mothers</h3>			
+					<md-list id="target2" class="dropzoneFormat" id="drop3" dropall drop="vm.peopleDrop('drop3')">
+						<md-list-item>Drop&nbsp;Mothers&nbsp;Here</md-list-item>
+					</md-list>
+				</div>	
+				
+				<div style="padding-left:20px">
+					<h3 style="margin-top:-20px">Children</h3>			
+					<md-list id="target3" class="dropzoneFormat" id="drop4" drop="vm.peopleDrop('drop4')">
+						<md-list-item>Drop&nbsp;Children&nbsp;Here</md-list-item>
+					</md-list>
+				</div>
+				
+				<div style="padding-left:20px">
+					<h3 style="margin-top:-20px">Other</h3>			
+					<md-list id="target4" class="dropzoneFormat" id="drop5" dropall drop="vm.peopleDrop('drop5')">
+						<md-list-item>Drop&nbsp;Others&nbsp;Here</md-list-item>
+					</md-list>
+				</div>
+			</div>
+		</fieldset>
+				
+	</div>	
+	<div ui-view="familyButtons" autoscroll="false"></div>
+</div>
+
+	<div ui-view="familyCreatedList" autoscroll="false"></div>
+
+	

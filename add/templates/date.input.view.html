@@ -1,0 +1,73 @@
+<!--  ******************************************************
+
+    Standard Date Picker, no styles, finished and tested 2/6/2017
+
+	 ******************************************************
+-->
+
+<md-grid-list class="up30" md-cols="5" md-gutter="20px" md-row-height="70px">
+	<md-grid-tile>
+    	<label>{{vm.whichLabel}}</label>
+        <select ng-change="vm.doChange()" ng-model="vm.data.selectedType" ng-options="item as item.label for item in vm.typeList track by item.value"></select>
+ 	</md-grid-tile>
+ 	
+ 	<md-grid-tile>
+   		<label>Date&nbsp;Modifier</label>
+       	<select ng-model="vm.data.dateModifier" ng-options="item as item.label for item in vm.modList track by item.value"></select>
+ 	</md-grid-tile>
+ 	
+ 	<md-grid-tile ng-if="vm.data.dateModifier.value=='EXA'">
+     	<label>Exact&nbsp;Date</label>
+		<md-datepicker md-placeholder="mm/dd/yyyy*" ng-model="vm.data.date1" required></md-datepicker>
+	</md-grid-tile>
+
+ 	<md-grid-tile ng-if="vm.data.dateModifier.value=='BEF'">
+  	 	<label>Before&nbsp;Date</label>
+		<md-datepicker md-placeholder="mm/dd/yyyy*" ng-model="vm.data.date1" required></md-datepicker>
+ 	</md-grid-tile>
+
+	<md-grid-tile md-colspan="2" ng-if="vm.data.dateModifier.value=='BET'">
+   		<label>From&nbsp;Date</label>
+		<md-datepicker md-placeholder="mm/dd/yyyy*" ng-model="vm.data.date1" required></md-datepicker>
+	</md-grid-tile>
+
+ 	<md-grid-tile ng-if="vm.data.dateModifier.value=='BET'">
+    		<label>To&nbsp;Date</label>
+		<md-datepicker md-placeholder="mm/dd/yyyy*" ng-model="vm.data.date2" required></md-datepicker>
+ 	</md-grid-tile>
+
+	<md-grid-tile ng-if="vm.data.dateModifier.value=='AFT'">
+    		<label>After&nbsp;Date</label>
+		<md-datepicker md-placeholder="mm/dd/yyyy*" ng-model="vm.data.date1" required></md-datepicker>
+	</md-grid-tile>
+	
+	<md-grid-tile ng-if="vm.data.dateModifier.value=='FRO'">
+    		<label>From&nbsp;Date</label>
+		<md-datepicker md-placeholder="mm/dd/yyyy*" ng-model="vm.data.date1" required></md-datepicker>
+	</md-grid-tile>
+	
+	<md-grid-tile ng-if="vm.data.dateModifier.value=='TO '">
+    		<label>To&nbsp;Date</label>
+			<md-datepicker md-placeholder="mm/dd/yyyy*" ng-model="vm.data.date1" required></md-datepicker>
+		</md-grid-tile>
+	
+	<md-grid-tile ng-if="vm.data.dateModifier.value=='PHR'">
+    	<label>Phrase</label>
+		<input placeholder="Phrase" type="text" ng-model="vm.data.date1" required md-maxlength="20">
+	</md-grid-tile>
+	
+	<md-grid-tile ng-if="vm.dateModifier.value=='ABO'">
+    		<label>About</label>
+			<md-datepicker md-placeholder="mm/dd/yyyy*" ng-model="vm.data.date1" required></md-datepicker>
+		</md-grid-tile>
+	
+	<md-grid-tile ng-if="vm.data.dateModifier.value=='EST'">
+    		<label>Estimated</label>
+			<md-datepicker md-placeholder="mm/dd/yyyy*" ng-model="vm.data.date1"></md-datepicker>
+			</md-grid-tile>
+	
+	<md-grid-tile ng-if="vm.data.dateModifier.value=='CAL'">
+    		<label>Calculated</label>
+			<md-datepicker md-placeholder="mm/dd/yyyy*" ng-model="vm.data.date1" required></md-datepicker>
+	</md-grid-tile>
+</md-grid-list>

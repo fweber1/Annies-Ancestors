@@ -1,0 +1,70 @@
+<!-- ***********************************************************************
+
+	 Event card finished, no styles, 2/6/2017
+	 
+	 *********************************************************************** 
+-->
+	 
+<div ng-cloak class="my-subcard" flex="90" layout-padding>
+	<section layout="row" layout-sm="column" layout-align="end center" layout-wrap>
+	  	<div layout="row" layout-align="start center" flex>
+			<legend>{{data.selectedType.label}} Data for 
+				<span class="curUser" ng-dblClick="vm.showDetails1(vm.data.mainID)">
+				{{vm.data.fullName}}
+				</span>
+				<span style="color:teal" class="curUser"><i class="material-icons" ng-click="vm.searchPage1(vm.params.curPersonID,'main')">search</i></span>
+			</legend>    
+			<span flex></span>
+	  	</div>
+		<span layout-padding ng-click="vm.doAdd1()" style="color:teal" class="curUser"><i class="material-icons">person_add</i></span>
+		<span ng-click="vm.doDelete1()" style="color:teal" class="curUser"><i class="material-icons">delete</i></span>
+	</section>
+	
+	<section layout="row" layout-sm="column" layout-align="end end" layout-wrap>
+	  	<div layout="row" layout-align="start center" flex>
+			<form ng-submit="vm.onSubmit1()" id="theForm1" name="theForm1" novalidate>
+					
+		  		<div layout="column" layout-align="end start">
+		   			<div layout="row" layout-align="space-between start">
+			  			<div layout="column" layout-align="start start">
+			 				<div layout="row" layout-align="start start" ng-show="data.selectedType.label=='Birth' || data.selectedType.label=='Adoption'"> 
+								<div>Father:&nbsp;</div>
+								<span class="curUser" ng-dblClick="vm.showDetails1(vm.data.father.mainID)">
+									{{vm.data.father.fullName}}
+								</span>			
+								<span style="color:teal" class="curUser"><i class="material-icons" ng-click="vm.searchPage1(vm.data.father.mainID,'father')">search</i></span> 				
+							</div>
+							
+							<div layout="row" layout-align="start start" ng-show="data.selectedType.label=='Birth' || data.selectedType.label=='Adoption'"> 
+								<div>Mother:&nbsp;</div>
+								<span class="curUser" ng-dblClick="vm.showDetails1(vm.data.mother.mainID)">
+									{{vm.data.mother.fullName}}
+								</span>			
+								<span style="color:teal" class="curUser"><i class="material-icons" ng-click="vm.searchPage1(vm.data.mother.mainID,'mother')">search</i></span>				 					
+							</div>
+						</div>
+					
+					</div>
+					
+					<div layout-padding layout="column">
+			 			<div ui-view="editEventDates" autoscroll="false"></div>
+						<div layout="row">
+							<div ui-view="editEventPlaces" autoscroll="false"></div>
+						</div>
+					</div>
+				</div>
+			</form>
+			<span flex></span>
+		</div>
+		<md-input-container layout-padding flex style="padding-right:20px">
+			<label>Details</label>
+			<textarea max-rows="13" wrap="soft" ng-model="vm.data.details.details" md-maxlength="700"></textarea>
+		</md-input-container>
+	</section>
+	<div ui-view="editEventButtons" autoscroll="false"></div>
+</div>
+					
+<div ui-view="editEventsInuseList" autoscroll="false"></div>
+<div ui-view="editEventsShowEmail" autoscroll="false"></div>
+	 		
+	

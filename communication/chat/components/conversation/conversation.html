@@ -1,0 +1,12 @@
+<div class="conversation">
+
+	<conversation-name-channel ng-if="conversationType == 'channel'"></conversation-name-channel>
+
+	<conversation-name-direct user="friend" ng-if="conversationType != 'channel'"></conversation-name-direct>
+
+	<message-list messages="conversation"></message-list>
+
+	<typing-indicator-box users-typing="usersTyping"></typing-indicator-box>
+
+	<message-form conversation="conversation"></message-form>
+</div>

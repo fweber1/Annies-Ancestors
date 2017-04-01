@@ -1,0 +1,53 @@
+/* following are to hide download button on media controllers */
+
+#video::-webkit-media-controls {
+    overflow: hidden !important
+}
+#video::-webkit-media-controls-enclosure {
+    width: calc(100% + 32px);
+    margin-left: auto;
+}
+#audio::-webkit-media-controls {
+    overflow: hidden !important
+}
+#audio::-webkit-media-controls-enclosure {
+    width: calc(100% + 32px);
+    margin-left: auto;
+}
+
+.zoomIt {
+ 	transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
+	transform: scale(10);
+}
+
+.unZoomIt {
+ 	transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
+	transform: scale(1);
+}
+
+.even {
+	background-color: antiqueWhite;
+}
+
+.odd {
+	background-color: powderBlue;
+}
+
+.thumbnail {
+	width:45px;
+	height:45px;
+	border:none;
+	margin:5px;
+	padding:0px;
+    float:right;
+}
+
+.accContent {
+	margin:0;
+	padding:5px;
+}
+
+.rounded {
+	border-top-left-radius:5px;
+	border-top-right-radius:5px
+}

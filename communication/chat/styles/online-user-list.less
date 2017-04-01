@@ -1,0 +1,38 @@
+@import "theme.less";
+
+/* -------- Online user list ---------- */
+
+.online-user-list, ul.online-user-list-avatars {
+  display: flex;
+}
+
+.online-user-list {
+  flex: 1 0 auto;
+  margin:0;
+  max-height:65px;
+  background-color: @base-color ;
+}
+
+.online-user-list ul {
+  flex: 1;
+  flex-direction: row;
+  overflow-x:auto; 
+  flex-wrap: nowrap;
+  margin:0;
+}
+
+ul.online-user-list-avatars li{
+  display: inline-block;
+}
+
+.online-user-list img{
+  margin:4px;
+  width:50px;
+  margin-right: 10px
+}
+
+.online-users-number{
+  color:white;
+  margin-left:10px;
+  margin-right:10px;
+}

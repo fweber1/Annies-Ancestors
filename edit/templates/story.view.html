@@ -1,0 +1,61 @@
+<!-- ***********************************************************************
+
+	 stories card
+	 
+	 *********************************************************************** 
+-->
+ <div ng-cloak class="my-subcard" flex="90" layout-padding>
+	<section layout="row" layout-sm="column" layout-align="end center" layout-wrap>
+	  	<div layout="row" layout-align="start center" flex>
+			<legend>{{data.selectedType.label}} Stories About 
+				<span class="curUser" ng-dblClick="vm.showDetails4(vm.data.mainID)">
+				{{vm.data.fullName}}
+				</span>
+				<span style="color:teal" class="curUser"><i class="material-icons" ng-click="vm.searchPage1(vm.params.curPersonID,'main')">search</i></span>
+	   				<span class="curUser" ng-show="vm.data.other" ng-dblClick="vm.showDetails4(vm.data.mainID)" style="margin-left:50px;color:red">
+	   					This datum is owned by {{vm.data.ownerName}}. 
+	   					<i class="material-icons" style="color:black;margin-top:-5px">email</i>
+	    				<md-checkbox aria-label="send email"></md-checkbox>
+	   				</span>		
+			</legend>    
+			<span flex></span>
+	  	</div>
+		<span layout-padding ng-click="vm.doAdd4()" style="color:teal" class="curUser"><i class="material-icons">person_add</i></span>
+		<span ng-click="vm.doDelete4()" style="color:teal" class="curUser"><i class="material-icons">delete</i></span>
+	</section>
+			
+		<form ng-submit="vm.onSubmit4()" novalidate>
+			<div layout="row" layout-align="space-between center" flex="100">
+				<div ng-show="vm.data.showType" flex="30">
+					<md-input-container>
+						<label>Select a Story</label>
+						<md-select ng-model="vm.data.selected" ng-change="vm.doChange4()">
+							<md-option ng-value="item.id" ng-repeat="item in vm.data.media track by item.id">{{item.theTitle}}</md-option>
+						</md-select>
+					</md-input-container>
+				</div>
+
+				<md-input-container flex="30">
+					<label>Short Title</label>
+					<input type="text" ng-model="vm.data.details.theTitle" required md-maxlength="30">
+				</md-input-container>
+	 
+	 			<md-input-container flex>
+					<label>Long Title</label>
+					<input type="text" ng-model="vm.data.details.longTitle" md-maxlength="80">
+				</md-input-container>
+ 	 		</div>
+ 			<div class="my-required" layout-padding>*Required</div>
+ 	 		
+ 	 		<div layout="row" flex layout-align="center start">	
+ 			 	<div flex="80" layout="column" layout-align="center center">	
+					<div class="md-title">Compose a Story or Drop a File</div>
+					<trix-editor id="trix-editor" class="editor trix-content enable-text-selection" style="white-space:pre-line;overflow:scroll" ng-model-options="{ updateOn: 'blur' }" spellcheck="true" ng-model="vm.data.details.theContent" angular-trix trix-initialize="vm.trixInitialize(e, editor);" trix-change="vm.trixChange(e, editor);" trix-selection-change="vm.trixSelectionChange(e, editor);" trix-focus="vm.trixFocus(e, editor);" trix-blur="vm.trixBlur(e, editor);" trix-file-accept="vm.trixFileAccept(e, editor);"></trix-editor>
+				</div>
+			</div>
+		<p></p>
+		<div ui-view="editStoriesButtons" autoscroll="false"></div>
+	</form>
+</div>
+<div ui-view="editStoriesInuseList" autoscroll="false"></div>
+<div ui-view="editStoriesShowEmail" autoscroll="false"></div>

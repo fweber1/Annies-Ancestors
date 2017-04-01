@@ -1,0 +1,35 @@
+<h3>Login to {{vm.params.appName}}</h3>
+<form name="loginForm" id="loginForm" ng-submit="vm.doLogin()" novalidate>
+	<div focus-on-show="vm.setFocus" flex flex-fill layout="column">
+		<md-input-container class="md-input-focused">
+			<label>E-mail</label>
+		 	<input type="email" name="email" id="email" aria-label="email" class="form-control" ng-model="vm.data.email" ng-pattern="/^.+@.+\..+$/" required />
+		</md-input-container>
+		
+		<md-input-container style="margin-top:-20px">
+			<label>Password</label>
+		<input type="password" name="password" id="password" class="form-control" ng-model="vm.data.password" required />
+		</md-input-container>
+	</div>
+		
+ 	<div>Forgot your <a ng-href="" ng-click="vm.doPassword()">Password</a>?</div>
+	<div ng-show="vm.showEmailLink"><a ng-href="" ng-click="vm.doEmail()">Change</a> Email</div><br>
+	
+	<div layout="row">
+		<md-button type="submit" id="submit" class="md-raised md-primary" ng-disabled="loginForm.$invalid">
+			Log In
+		</md-button>
+
+		<md-button ng-show="vm.showRegister" type="button" class="md-raised md-primary" ng-click="vm.doRegister()">
+			Register
+		</md-button>
+
+		<md-button ng-show="vm.showGuest" type="button" class="md-raised md-primary" ng-click="vm.doGuest()">
+			Guest
+		</md-button>
+			
+		<md-button ng-show="vm.showCancel" type="button" class="md-raised md-primary" href="vm.doCancel()">
+			Cancel
+		</md-button>
+ </div>
+</form>	

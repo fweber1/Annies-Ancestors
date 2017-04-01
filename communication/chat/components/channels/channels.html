@@ -1,0 +1,8 @@
+<div layout="row" layout-align="center center">
+	<div ng-repeat="channel in channels" layout="row" layout-align="center center">
+		<md-button type="button" class="md-raised md-primary" ng-href="communication/chat/conversation/channel/{{channel.roomID}}">
+			<i class="material-icons">chat_bubble_outline</i>
+			<span>{{channel.roomName}}</span>
+		</md-button>
+	</div>
+</div>

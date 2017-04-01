@@ -1,0 +1,51 @@
+<div class="my-card" ng-cloak style="height:730px">
+	<md-toolbar class="md-accent my-page-header">
+		<div flex flex-fill layout="row" layout-align="center center">
+
+			<div layout="column" layout-align="center center">
+				<div>{{vm.leftPerson.fullName}}</div>
+				<div>({{vm.leftPerson.birthDate}} &mdash; {{vm.leftPerson.deathDate}})&nbsp;</div>
+			</div>
+			<div flex="5" layout="column" layout-align="center center" ng-show="vm.rightPerson.showPerson || true">
+				&nbsp;&amp;&nbsp;
+			</div>
+			<div layout="column" layout-align="center center" ng-show="vm.rightPerson.showPerson || 'true'">
+				<div>{{vm.rightPerson.fullName}}</div>
+				<div>({{vm.rightPerson.birthDate}} &mdash; {{vm.rightPerson.deathDate}})</div>
+			</div>
+
+			<div style="margin-left:40px;height:30px" ng-show="vm.showReturn" layout="row" layout-align="center center">
+				<md-button ng-click="vm.returnToStart()" ng-href class="md-primary" aria-label="Return" style="margin-left:-12px">
+				 	<md-icon style="color:white;margin-left:45px;margin-top:20px">&#xE31B;</md-icon>
+				</md-button>
+				<div style="text-color:white;margin-left:-15px">Return</div>
+			</div>
+		</div>
+	</md-toolbar>
+
+			<!--- slider --->
+
+	<div ui-view="sliderPanel" layout="row" layout-align="center center"></div>
+
+		<md-divider></md-divider>
+
+		<div layout="row" layout-align="center start" layout-padding>
+
+			<!---column 1 (person) --->
+
+				<md-card ui-view="leftPanel" flex="33" layout="column" layout-align="center center" layout-padding class="leftPane curUser" ng-dblClick="vm.showLeftDetails()" ng-class="{leftPaneBig:leftPane}"></md-card>
+
+			<!---column 2 (children)--->
+
+				<div layout="column" flex="30" flex-fill layout-align="center center" layout-padding>
+					<md-card ui-view="middleTopPanel" class="midPane1" flex="10" flex-fill layout="column" layout-align="center center" layout-padding></md-card>
+					<md-card ui-view="middleMiddlePanel" class="midPane2" flex="10" flex-fill layout="column" layout-align="center center" layout-padding></md-card>
+					<md-card ui-view="middleBottomPanel" class="midPane3" flex="10" flex-fill layout="column" layout-align="center center" layout-padding></md-card>
+				</div>
+
+			<!--column 3 (spouse)-->
+
+				<md-card ui-view="rightPanel" flex="33" layout="column" layout-align="center center" layout-padding class="rightPane curUser" ng-dblClick="vm.showRightDetails()" ng-class="{rightPaneBig:rightPane}"></md-card>
+
+	</div>
+</div>

@@ -1,0 +1,77 @@
+<!--  ******************************************************
+
+    Standard Date Picker, no styles, finished and tested 2/6/2017
+
+	 ******************************************************
+-->
+
+<div layout="row" layout-align="start center">
+	<md-input-container flex="20">
+		<label>Events</label>
+		<md-select ng-model="data.selectedType" ng-change="vm.doChange{{vm.tab}}()">
+			<md-option ng-value="item" ng-repeat="item in vm.typeList track by item.value">{{item.label}}</md-option>
+		</md-select>
+	</md-input-container>
+
+ 	<md-input-container flex="30">
+	 	<label>Date Modifier</label>
+		<md-select ng-model="data.dateModifier">
+			<md-option ng-value="item" ng-repeat="item in vm.modList track by item.value">{{item.label}}</md-option>
+		</md-select>
+ 	</md-input-container>
+
+	<md-input-container ng-if="data.dateModifier.value=='EXA'">
+		<label>Exact&nbsp;Date</label>
+		<md-datepicker md-placeholder="mm/dd/yyyy*" ng-model="vm.data.details.date1"></md-datepicker>
+	</md-input-container>
+
+ 	<md-input-container ng-if="data.dateModifier.value=='BEF'">
+		<label>Before&nbsp;Date</label>
+		<md-datepicker md-placeholder="mm/dd/yyyy*" ng-model="vm.data.details.date1"></md-datepicker>
+	</md-input-container>
+
+ 	<md-input-container ng-if="data.dateModifier.value=='BET'">
+  		<label>From&nbsp;Date</label>
+		<md-datepicker md-placeholder="mm/dd/yyyy*" ng-model="vm.data.details.date1"></md-datepicker>
+	</md-input-container>
+
+	 <md-input-container ng-if="data.dateModifier.value=='BET'">
+		<label>To&nbsp;Date</label>
+		<md-datepicker md-placeholder="mm/dd/yyyy*" ng-model="vm.data.details.date2"></md-datepicker>
+	</md-input-container>
+
+	<md-input-container ng-if="data.dateModifier.value=='AFT'">
+		<label>After&nbsp;Date</label>
+		<md-datepicker md-placeholder="mm/dd/yyyy*" ng-model="vm.data.details.date1"></md-datepicker>
+	</md-input-container>
+
+	<md-input-container ng-if="data.dateModifier.value=='FRO'">
+		<label>From&nbsp;Date</label>
+		<md-datepicker md-placeholder="mm/dd/yyyy*" ng-model="vm.data.details.date1"></md-datepicker>
+	</md-input-container>
+
+	<md-input-container ng-if="data.dateModifier.value=='TO'">
+		<label>To&nbsp;Date</label>
+		<md-datepicker md-placeholder="mm/dd/yyyy*" ng-model="vm.data.details.date1"></md-datepicker>
+	</md-input-container>
+
+	<md-input-container ng-if="data.dateModifier.value=='PHR'">
+		<label>Date&nbsp;Phrase</label>
+		<input placeholder="Phrase" type="text" ng-model="vm.data.details.date1" required md-maxlength="20">
+	</md-input-container>
+
+	<md-input-container ng-if="data.dateModifier.value=='ABT'">
+		<label>About&nbsp;Date</label>
+		<md-datepicker md-placeholder="mm/dd/yyyy*" ng-model="vm.data.details.date1"></md-datepicker>
+	</md-input-container>
+
+	<md-input-container ng-if="data.dateModifier.value=='EST'">
+		<label>Estimated&nbsp;Date</label>
+		<md-datepicker md-placeholder="mm/dd/yyyy*" ng-model="vm.data.details.date1"></md-datepicker>
+	</md-input-container>
+
+	<md-input-container ng-if="data.dateModifier.value=='CAL'">
+		<label>Calculated&nbsp;Phrase</label>
+		<input placeholder="Phrase" type="text" ng-model="vm.data.details.date1" required md-maxlength="20">
+	</md-input-container>
+</div>

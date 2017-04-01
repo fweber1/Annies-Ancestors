@@ -1,0 +1,16 @@
+<div style="text-align:center" flex="95">
+	<div layout="row">
+		<div flex="50" layout="row" layout-align="end">
+			<div>Selected Date:&nbsp;</div>
+		</div>
+		<div flex="50" layout="row" layout-align="start">
+			<div>{{(vm.slider | date:'MMMM dd, yyyy') || 0}}</div>
+		</div>
+	</div>
+	
+	<md-slider-container style="margin-top:-15px;margin-bottom:-10px">
+		<span>{{(vm.sliderMin | date:'yyyy') || 0}}</span>
+		<md-slider ng-change="updateSlider()" flex flex-fill ng-model="vm.slider" min="{{vm.sliderMin || -1}}" max="{{vm.sliderMax || 1}}" aria-label="Year"></md-slider>
+		<span>{{(vm.sliderMax | date:'yyyy') || 1}}</span>
+	</md-slider-container>
+</div>

@@ -1,0 +1,47 @@
+<!-- ***********************************************************************
+
+	 media card
+	 
+	 *********************************************************************** 
+-->
+
+<div ng-cloak class="my-subcard" focus-on-show="vm.setFocus" flex="65" layout-padding>
+	<div layout-padding layout-align="start start">
+		<form ng-submit="vm.onSubmit5()" novalidate>
+			<fieldset>			
+				<legend>Media Files About <span drop="nameDrop5" class="bin" ng-dblClick="vm.showDetails5($index)" id="curUser5" dropall><span>{{vm.data.fullName}}</span></span></legend>
+				<md-input-container>
+					<label>Title</label>
+					<input style="width:500px" type="text" ng-model="vm.data.theTitle" required md-maxlength="150">
+				</md-input-container>
+				<div class="my-required" layout-padding>*Required</div>
+			</fieldset>			
+		</form>
+	</div>
+				   		
+	<div flex="100" layout-align="center center">
+	  	<div id="uploadProfile5" layout="column" layout-align="center center">
+	  		<h1>Drop photo, video, or audio files</h1>
+	  		<div style="visibility:hidden;display:none;">
+		  		<div style="visibility:hidden;display:none;" id="preview-template">
+			  		<div style="visibility:hidden;display:none;" class="dz-preview dz-file-preview">
+						<div style="visibility:hidden;display:none;" class="dz-details">
+						    <div style="visibility:hidden;display:none;" class="dz-filename"><span data-dz-name></span></div>
+						    <div style="visibility:hidden;display:none;" class="dz-size" data-dz-size></div>
+						    	<img style="visibility:hidden;display:none;" data-dz-thumbnail />
+							<div style="visibility:hidden;display:none;" class="dz-progress"><span class="dz-upload" data-dz-uploadprogress></span></div>
+							<div style="visibility:hidden;display:none;" class="dz-success-mark"><span>✔</span></div>
+							<div style="visibility:hidden;display:none;" class="dz-error-mark"><span>✘</span></div>
+							<div style="visibility:hidden;display:none;" class="dz-error-message"><span data-dz-errormessage></span></div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="dz-message dropzoneFormat">
+		    	Drop a photo, video, or audio file about {{vm.data.fullName}} here.
+			</div>
+		</div>
+	</div>
+		<div ui-view="mediaButtons" autoscroll="false"></div>
+		<div ui-view="mediaCreatedList" autoscroll="false"></div>
+</div>

@@ -1,0 +1,80 @@
+<div class="my-card">
+	<md-toolbar class="md-accent my-page-header">
+		<div flex flex-fill layout="row" layout-align="center center">Select {{vm.params.appName}} Users for Communication</div>
+	</md-toolbar>
+		
+	<div class="my-subcard" style="width:95%;padding:0">
+	<md-tabs md-dynamic-height md-border-bottom md-swipe-content>
+	 
+<!-- ****************************************** Select Individuals ********************************** --> 
+
+			<md-tab label="Individuals" md-on-deselect="vm.saveRecipients()">
+				<individual style="margin:20px"></individual>
+			</md-tab>
+	 
+<!-- ****************************************** Select Group ********************************** --> 
+
+	<md-tab label="Groups">
+	<md-content class="md-padding">
+		 Select group(s) to communicate with
+	</md-content>
+	</md-tab>
+	 
+<!-- ****************************************** Email ****************************************** --> 
+	 
+	<md-tab label="Email">
+	 		<email></email>
+	</md-tab>
+	 
+<!-- ****************************************** Text Chat ************************************* --> 
+	 
+	<md-tab label="Text Chat" ng-disabled="vm.cntrlFlags.inactiveTabs">
+	<md-content class="md-padding">
+		<h3>Welecome {{vm.fullName}}. Select a chat room below:</h3>
+ 
+					<div class="chat">
+					 	<section class="chat-sidebar">
+						<span class="channels-title">CHANNELS</span>
+						<channels></channels>
+						<span class="direct-title">DIRECT MESSAGES</span>
+						</section>
+							
+						<section class="chat-main" ui-view></section>						 
+					</div> 				
+	</md-content>
+	</md-tab>
+	 
+<!-- ****************************************** Video Chat ************************************ --> 
+	 
+			<md-tab label="Video Chat "ng-disabled="vm.cntrlFlags.inactiveTabs">
+			 	<video></video>
+			</md-tab>
+	 
+<!-- ****************************************** Bulletin Board ************************************ --> 
+	 
+			<md-tab label="Bulletin Board" ng-disabled="vm.cntrlFlags.inactiveTabs">
+				<md-content class="md-padding">
+					<p>Bulletin Board for individuals or selected group: James Wilson Johnson, III family</p>
+					<div style="background-image:url('icon/bulletinboard.jpg');width:960px;height:420px">
+						<div style="position:relative;left:20px;top:30px">
+							<img ng-src="icon/blank.gif" >
+						</div>
+					</div>
+				</md-content>
+			</md-tab>
+	 
+<!-- ****************************************** Text Messaging ********************************** --> 
+	 
+			<md-tab label="Text Message" ng-disabled="vm.cntrlFlags.inactiveTabs">
+				<text></text>
+			</md-tab>
+
+<!-- ****************************************** GEDCOM files ********************************** --> 
+	 
+			<md-tab label="GEDCOM Files">
+				<gedcom></gedcom>
+			</md-tab>
+
+		</md-tabs>
+	</div>
+</div>

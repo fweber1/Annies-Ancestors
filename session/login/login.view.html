@@ -1,0 +1,11 @@
+﻿ <div class="my-card">
+ 	<md-toolbar class="md-accent my-page-header">
+		<div layout="row" layout-align="center center">
+			<div>Login to Accees {{vm.params.appName}} Content</div>
+		</div>
+	</md-toolbar>
+ 	
+	<section focus-on-show="vm.setFocus" class="my-subcard" flex="40" class="transformable">
+		<div ui-view="theForm" autoscroll="false"></div>
+	</section>
+ </div>

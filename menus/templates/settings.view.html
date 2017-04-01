@@ -1,0 +1,28 @@
+<md-dialog>
+	<md-dialog-content> 
+	<form ng-submit="vm.onSubmit0()" novalidate>
+		<fieldset>			
+			<legend layout-padding>Application Settings</legend>
+			<div layout="row" layout-align="start" style="width:900px">		
+		 	  	<div layout="column" layout-align="start" layout-padding style="width:400px">
+				  	<h3>Company&nbsp;Communication:</h3>
+					<md-checkbox style="margin-left:8px" ng-model="vm.data.offers" aria-label="Opt out of offers">
+					 	Opt of of {{vm.appName}} offers.
+					</md-checkbox>		
+				</div>
+		 	  	<div layout="column" layout-align="start" layout-padding style="width:400px;border-left:thin solid black">
+				  	<h3>User&nbsp;Communication</h3>
+					<md-checkbox ng-model="vm.data.text" aria-label="Text messages" >
+					 	Do not receive text messages
+					</md-checkbox>		
+				</div>
+			</div>
+		</fieldset>
+	</form>
+	</md-dialog-content>
+	<md-dialog-actions>
+		<md-button class="md-raised md-primary" ng-click="vm.closeDialog()">
+			Close
+		</md-button>
+	</md-dialog-actions>
+</md-dialog>

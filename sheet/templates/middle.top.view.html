@@ -1,0 +1,31 @@
+<div ng-hide="vm.middlePerson[0].mainID>0" flex="10" flex-fill layout="column" layout-align="center center" class="md-title" layout-padding>
+	<div>No Children at This Time</div>
+</div>
+
+<div ng-show="vm.middlePerson[0].mainID>0" layout="column" layout-align="center center" layout-padding class="midPane1" ng-dblClick="midPane1=!midPane1 || false" ng-class="{midPaneBig1:midPane1}">
+	<md-card-title>
+		<md-card-title-text>
+		<span style="text-align:center" class="md-title">Children</span>
+		</md-card-title-text>
+	</md-card-title>
+
+	<div layout="row" layout-align="left">
+		<div layout="column" layout-align="left">
+			<div class="md-title">Name</div>								
+			<div ng-repeat="x in vm.middlePerson" class="md-subhead">
+				<div ng-dblclick="vm.showDetails(x.mainID)" ng-class="{private:x.living}" class="curUser">
+					{{x.fullName}}
+				</div> 
+			</div>
+		</div>
+
+		<div layout="column" layout-align="left">								
+			<div class="md-title">Dates</div>								
+			<div ng-repeat="x in vm.middlePerson" class="md-subhead">
+				<div ng-class="{private:x.living}">
+					{{x.birthYear}}&mdash;{{x.deathYear}}
+				</div>
+			</div>
+		</div>				
+	</div>	
+</div>

@@ -1,0 +1,72 @@
+<!-- ***********************************************************************
+
+	 Marriage card finished, no styles, 2/6/2017
+	 
+	 *********************************************************************** 
+-->
+	 
+<div ng-cloak class="my-subcard" flex="90" layout-padding>
+	<section layout="row" layout-sm="column" layout-align="end center" layout-wrap>
+	  	<div layout="row" layout-align="start center" flex>
+			<legend>{{data.selectedType.label}} Data for 
+				<span class="curUser" ng-dblClick="vm.showDetails3(vm.data.mainID)">
+				{{vm.data.fullName}}
+				</span>
+				<span style="color:teal" class="curUser"><i class="material-icons" ng-click="vm.searchPage3(vm.params.curPersonID,'main')">search</i></span>
+	   				<span ng-show="vm.data.numSpouse>1">
+						<md-menu md-offset="0 50">
+							<span  style="color:teal" ng-click="$mdMenu.open($event)"><i class="material-icons">favorite</i></span>
+											
+							<md-menu-content>
+	 							<div ng-repeat="x in vm.data.spouses" class="md-subhead">
+									<md-menu-item>
+										<md-button ng-class="{private:x.living=='Y'}" ng-disabled="vm.disableSpouse($index);" ng-click="vm.changeSpouse($index,false)">{{x.fullName}}</md-button>
+									</md-menu-item>
+								</div>									
+	 	 					</md-menu-content>
+						</md-menu>
+					</span>
+	   						
+			</legend>    
+			<span flex></span>
+	  	</div>
+		<span layout-padding ng-click="vm.doAdd3()" style="color:teal" class="curUser"><i class="material-icons">person_add</i></span>
+		<span ng-click="vm.doDelete3()" style="color:teal" class="curUser"><i class="material-icons">delete</i></span>
+	</section>
+
+	<section layout="row" layout-sm="column" layout-align="end end" layout-wrap>
+	  	<div layout="row" layout-align="start center" flex>
+		<form ng-submit="vm.onSubmit3()" novalidate>
+
+	  		<div layout="column" layout-align="end start">
+
+			<div style="margin-left:30px;margin-bottom:20px;font-size:18px"> 
+				with Spouse: 
+				<span class="curUser" ng-dblClick="vm.showDetails3(vm.data.spouses[vm.data.curSpouse].mainID)">
+					{{vm.data.spouse.fullName}}
+				</span>			
+				<span style="color:teal" class="curUser"><i class="material-icons" ng-click="vm.searchPage3(vm.data.spouses[vm.data.curSpouse].mainID,'spouse')">search</i></span>
+				
+			</div>
+				
+					<div layout-padding layout="column">
+			 			<div ui-view="editMarriagesDates" autoscroll="false"></div>
+						<div layout="row">
+							<div ui-view="editMarriagesPlaces" autoscroll="false"></div>
+						</div>
+					</div>
+				</div>
+			</form>
+			<span flex></span>
+		</div>
+		<md-input-container layout-padding flex style="padding-right:20px">
+			<label>Details</label>
+			<textarea max-rows="13" wrap="soft" ng-model="vm.data.details.details" md-maxlength="700"></textarea>
+		</md-input-container>
+	</section>
+	<div ui-view="editMarriagesButtons" autoscroll="false"></div>
+</div>
+<div ui-view="editMarriagesInuseList" autoscroll="false"></div>
+<div ui-view="editMarriagesShowEmail" autoscroll="false"></div>
+	 		
+	

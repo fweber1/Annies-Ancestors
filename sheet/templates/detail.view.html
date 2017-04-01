@@ -1,0 +1,529 @@
+<div style="background-color:darkBlue;text-align:right" flex="100" layout="row" layout-align="end end">
+	<span ng-click="vm.closeDialog()"><md-icon style="color:white">close</md-icon></span>
+</div>
+
+<div style="margin:20px;position:relative" flex="100" layout="row" layout-align="center start" layout-padding">
+
+	<div ng-show="vm.showMarriages.length>0" flex="30" layout="column" layout-align="start center">
+	
+		<div layout="row" layout-align="start start">		
+			<div layout="column" layout-align="start start">			
+			     <h3>Marriages</h3>
+ 				 <p></p>
+ 				 
+				 <ang-accordion icon-position="right" close-icon-url="/icon/right1.png" open-icon-url="/icon/down.png" one-at-a-time="true">
+				
+				  	<collapsible-item on-close="closeAllMedia()"  ng-if="vm.engages.length>0" item-title="Engagement" initially-open="false" ng-click="data.closeAllMedia()">
+				       	<div ng-repeat="m in vm.engages">
+				        	<div ng-class-odd="'odd'" ng-class-even="'even'">
+				   				<p class="accContent">On {{m.date1}}, at {{m.city}}, {{m.state}} in the county of {{m.county}}, {{m.country}}, {{vm.data.fullName}} and {{vm.data.spouses[vm.data.curSpouse].fullName}} were engaged.</p>
+					        	<p class="accContent" ng-hide="m.other==''">{{m.other}}</p>
+				     		</div>	
+						</div>
+					</collapsible-item>
+				 
+				  	<collapsible-item on-close="closeAllMedia()" ng-if="vm.announces.length>0" item-title="Announcement" initially-open="false">
+				       	<div ng-repeat="m in vm.announces">
+				        	<div ng-class-odd="'odd'" ng-class-even="'even'">
+				       			<p class="accContent">On {{m.date1}}, at {{m.city}}, {{m.state}} in the county of {{m.county}}, {{m.country}}, {{vm.data.fullName}} and {{vm.data.spouses[vm.data.curSpouse].fullName}} announced their engagement.</p>
+				        		<p class="accContent" ng-hide="m.other==''">{{m.other}}</p>
+				     		</div>	
+				      	</div>
+					</collapsible-item>
+				
+				  	<collapsible-item on-close="closeAllMedia()" ng-if="vm.licenses.length>0" item-title="Liceneses" initially-open="false" ng-click="vm.data.closeAllMedia()">
+				        <div ng-repeat="m in vm.licenses">
+				        	<div ng-class-odd="'odd'" ng-class-even="'even'">
+				        		<p class="accContent">On {{m.date1}}, at {{m.city}}, {{m.state}} in the county of {{m.county}}, {{m.country}}, {{vm.data.fullName}} and {{vm.data.spouses[vm.data.curSpouse].fullName}} filed for their marriage license.</p>
+				        		<p class="accContent" ng-hide="m.other==''">{{m.other}}</p>
+				     		</div>	
+				     	</div>
+					</collapsible-item>
+				
+				  	<collapsible-item on-close="closeAllMedia()" ng-if="vm.contracts.length>0" item-title="Contracts" initially-open="false" ng-click="vm.data.closeAllMedia()">
+				        <div ng-repeat="m in vm.contracts">
+				        	<div ng-class-odd="'odd'" ng-class-even="'even'">
+				        		<p class="accContent">On {{m.date1}}, at {{m.city}}, {{m.state}} in the county of {{m.county}}, {{m.country}}, {{vm.data.fullName}} and {{vm.data.spouses[vm.data.curSpouse].fullName}} signed their marriage contract.</p>
+				        		<p class="accContent" ng-hide="m.other==''">{{m.other}}</p>
+				     		</div>	
+				     	</div>
+					</collapsible-item>
+				 
+				  	<collapsible-item on-close="closeAllMedia()" ng-if="vm.dowries.length>0" item-title="Dowries" initially-open="false">
+				        <div ng-repeat="m in vm.dowries">
+				        	<div ng-class-odd="'odd'" ng-class-even="'even'">
+				        		<p class="accContent">On {{m.date1}}, at {{m.city}}, {{m.state}} in the county of {{m.county}}, {{m.country}}, {{vm.data.fullName}} and {{vm.data.spouses[vm.data.curSpouse].fullName}} set the dowry.</p>
+				        		<p class="accContent" ng-hide="m.other==''">{{m.other}}</p>
+				     		</div>	
+				     	</div>
+					</collapsible-item>
+				 
+				  	<collapsible-item on-close="closeAllMedia()" ng-if="vm.marriages.length>0" item-title="Marriages" initially-open="false">
+				        <div ng-repeat="m in vm.marriages">
+				        	<div ng-class-odd="'odd'" ng-class-even="'even'" class="accContent">
+				        		<p class="accContent">On {{m.date1}}, at {{m.city}}, {{m.state}} in the county of {{m.county}}, {{m.country}}, {{vm.data.fullName}} and {{vm.data.spouses[vm.data.curSpouse].fullName}} were married.</p>
+				        		<p class="accContent" ng-hide="m.other==''">{{m.other}}</p>
+				     		</div>
+				     	</div>
+					</collapsible-item>
+				 
+				  	<collapsible-item on-close="closeAllMedia()" ng-if="vm.commons.length>0" item-title="Common Law" initially-open="false">
+				        <div ng-repeat="m in vm.commons">
+				        	<div ng-class-odd="'odd'" ng-class-even="'even'">
+				        		<p class="accContent">On {{m.date1}}, at {{m.city}}, {{m.state}} in the county of {{m.county}}, {{m.country}}, {{vm.data.fullName}} and {{vm.data.spouses[vm.data.curSpouse].fullName}} had a common law marriage.</p>
+				        		<p class="accContent" ng-hide="m.other==''">{{m.other}}</p>
+						    </div>
+				     	</div>
+					</collapsible-item>
+				 
+				  	<collapsible-item on-close="closeAllMedia()" ng-if="vm.census1.length>0" item-title="Census Containing Marriage" initially-open="false">
+				        <div ng-repeat="m in vm.census1">
+				        	<div ng-class-odd="'odd'" ng-class-even="'even'">
+				        		<p class="accContent">The census at {{m.city}}, {{m.state}} in the county of {{m.county}} on {{m.date1}}, showed the marriage of, {{vm.data.fullName}} and {{vm.data.spouses[vm.data.curSpouse].fullName}}.</p>
+				        		<p class="accContent" ng-hide="m.other==''">{{m.other}}</p>
+						    </div>
+				     	</div>
+					</collapsible-item>
+				 
+				  	<collapsible-item on-close="closeAllMedia()" ng-if="vm.filed.length>0" item-title="Filed for Divorce" initially-open="false">
+				        <div ng-repeat="m in vm.filed">
+				        	<div ng-class-odd="'odd'" ng-class-even="'even'">
+				        		<p class="accContent">On {{m.date1}}, {{vm.data.fullName}} and {{vm.data.spouses[vm.data.curSpouse].fullName}} filed for divorce at {{m.city}}, {{m.state}} in the county of {{m.county}} .</p>
+				        		<p class="accContent" ng-hide="m.other==''">{{m.other}}</p>
+						    </div>
+				     	</div>
+					</collapsible-item>
+				
+				  	<collapsible-item on-close="closeAllMedia()" ng-if="vm.divorces.length>0" item-title="Divorces" initially-open="false">
+				        <div ng-repeat="m in vm.divorces">
+				        	<div ng-class-odd="'odd'" ng-class-even="'even'">
+				        		<p class="accContent">On {{m.date1}}, {{vm.data.fullName}} and {{vm.data.spouses[vm.data.curSpouse].fullName}} revieved a divorce at {{m.city}}, {{m.state}} in the county of {{m.county}} .</p>
+				        		<p class="accContent" ng-hide="m.other==''">{{m.other}}</p>
+						    </div>
+				     	</div>
+					</collapsible-item>
+				  
+				  	<collapsible-item on-close="closeAllMedia()" ng-if="vm.other1.length>0" item-title="Other Marriage Events" initially-open="false">
+				        <div ng-repeat="m in vm.other1">
+				        	<div ng-class-odd="'odd'" ng-class-even="'even'">
+				        		<p class="accContent">On {{m.date1}}, {{vm.data.fullName}} at {{m.city}}, {{m.state}} in the county of {{m.county}} {{vm.data.fullName}} and {{vm.data.spouses[vm.data.curSpouse].fullName}} had the following:</p>
+				        		<p class="accContent" ng-hide="m.other==''">{{m.other}}</p>
+				        	</div>
+				     	</div>
+					</collapsible-item>
+				 </ang-accordion>
+ 
+ 			      <h3 ng-show="vm.showEvents.length>0">Events</h3>
+ 				 <p></p>
+ 
+				<ang-accordion icon-position="right" close-icon-url="/icon/right1.png" open-icon-url="/icon/down.png" one-at-a-time="true">
+				
+				  	<collapsible-item on-close="closeAllMedia()"  ng-if="vm.adoptions.length>0" item-title="Adoption" initially-open="false">
+				       	<div ng-repeat="m in vm.adoptions">
+				        	<div ng-class-odd="'odd'" ng-class-even="'even'">
+				   				<p class="accContent">On {{m.date1}}, at {{m.city}}, {{m.state}} in the county of {{m.county}}, {{m.country}}, {{vm.data.fullName}} was adopted by {{vm.data.fathers[vm.data.curFather].fullName}}.</p>
+				        		<p class="accContent" ng-hide="m.other==''">{{m.other}}</p>
+						    </div>
+						</div>
+					</collapsible-item>
+				 
+				  	<collapsible-item on-close="closeAllMedia()" ng-if="vm.births.length>0" item-title="Birth" initially-open="false">
+				       	<div ng-repeat="m in vm.births">
+				        	<div ng-class-odd="'odd'" ng-class-even="'even'">
+				       			<p class="accContent">On {{m.date1}}, at {{m.city}}, {{m.state}} in the county of {{m.county}}, {{m.country}}, {{vm.data.fullName}} born to {{vm.data.father[vm.data.curfather].fullName}} and {{vm.data.mothers[vm.data.curMother].fullName}}</p>
+				        		<p class="accContent" ng-hide="m.other==''">{{m.other}}</p>
+						    </div>
+				      	</div>
+					</collapsible-item>
+				
+				  	<collapsible-item on-close="closeAllMedia()" ng-if="vm.baptisms.length>0" item-title="Baptism" initially-open="false">
+				        <div ng-repeat="m in vm.baptisms">
+				        	<div ng-class-odd="'odd'" ng-class-even="'even'">
+				        		<p class="accContent">On {{m.date1}}, at {{m.city}}, {{m.state}} in the county of {{m.county}}, {{m.country}}, {{vm.data.fullName}} was baptized.</p>
+				        		<p class="accContent" ng-hide="m.other==''">{{m.other}}</p>
+						    </div>
+				     	</div>
+					</collapsible-item>
+				
+				  	<collapsible-item on-close="closeAllMedia()" ng-if="vm.barMitzah.length>0" item-title="Bar Mitzvah" initially-open="false">
+				        <div ng-repeat="m in vm.barMitzah">
+				        	<div ng-class-odd="'odd'" ng-class-even="'even'">
+				        		<p class="accContent">On {{m.date1}}, at {{m.city}}, {{m.state}} in the county of {{m.county}}, {{m.country}}, {{vm.data.fullName}} had his Bar Mitzah.</p>
+				        		<p class="accContent" ng-hide="m.other==''">{{m.other}}</p>
+						    </div>
+				     	</div>
+					</collapsible-item>
+				 
+				  	<collapsible-item on-close="closeAllMedia()" ng-if="vm.bahMitzah.length>0" item-title="Bah Mitzvah" initially-open="false">
+				        <div ng-repeat="m in vm.bahMitzah">
+				        	<div ng-class-odd="'odd'" ng-class-even="'even'">
+				        		<p class="accContent">On {{m.date1}}, at {{m.city}}, {{m.state}} in the county of {{m.county}}, {{m.country}}, {{vm.data.fullName}} had her Bah Mitzah.</p>
+				        		<p class="accContent" ng-hide="m.other==''">{{m.other}}</p>
+						    </div>
+				     	</div>
+					</collapsible-item>
+				 
+				  	<collapsible-item on-close="closeAllMedia()" ng-if="vm.confirmations.length>0" item-title="Confirmation" initially-open="false">
+				        <div ng-repeat="m in vm.confirmations">
+				        	<div ng-class-odd="'odd'" ng-class-even="'even'">
+				        		<p class="accContent">On {{m.date1}}, at {{m.city}}, {{m.state}} in the county of {{m.county}}, {{m.country}}, {{vm.data.fullName}} was confirmed.</p>
+					        	<p class="accContent" ng-hide="m.other==''">{{m.other}}</p>
+						    </div>
+				     	</div>
+					</collapsible-item>
+				 
+				  	<collapsible-item on-close="closeAllMedia()" ng-if="vm.blessings.length>0" item-title="Blessing Affilation" initially-open="false">
+				        <div ng-repeat="m in vm.blessings">
+				        	<div ng-class-odd="'odd'" ng-class-even="'even'">
+				        		<p class="accContent">On {{m.date1}}, at {{m.city}}, {{m.state}} in the county of {{m.county}}, {{m.country}}, {{vm.data.fullName}} received <span ng-show="vm.data.gender=="M">his</span><span ng-show="vm.data.gender=="F">her</span> blessing affilation.</p>
+					        	<p class="accContent" ng-hide="m.other==''">{{m.other}}</p>
+						    </div>
+				     	</div>
+					</collapsible-item>
+				 
+				  	<collapsible-item on-close="closeAllMedia()" ng-if="vm.firstCommunions.length>0" item-title="First Communion" initially-open="false">
+				        <div ng-repeat="m in vm.firstCommunions">
+				        	<div ng-class-odd="'odd'" ng-class-even="'even'">
+				        		<p class="accContent">The census at {{m.city}}, {{m.state}} in the county of {{m.county}}, {{m.country}} on {{m.date1}}, {{vm.data.fullName}} took <span ng-show="vm.data.gender=="M">his</span><span ng-show="vm.data.gender=="F">her</span> first communion.</p>
+				        		<p class="accContent" ng-hide="m.other==''">{{m.other}}</p>
+						    </div>
+				     	</div>
+					</collapsible-item>
+				 
+				  	<collapsible-item on-close="closeAllMedia()" ng-if="vm.christenings.length>0" item-title="Adult Christening" initially-open="false">
+				        <div ng-repeat="m in vm.christenings">
+				        	<div ng-class-odd="'odd'" ng-class-even="'even'">
+				        		<p class="accContent">On {{m.date1}}, {{vm.data.fullName}} was christened as an adult at {{m.city}}, {{m.state}} in the county of {{m.county}}, {{m.country}}.</p>
+				        		<p class="accContent" ng-hide="m.other==''">{{m.other}}</p>
+						    </div>
+				     	</div>
+					</collapsible-item>
+				
+				  	<collapsible-item on-close="closeAllMedia()" ng-if="vm.deaths.length>0" item-title="Death" initially-open="false">
+				        <div ng-repeat="m in vm.deaths">
+				        	<div ng-class-odd="'odd'" ng-class-even="'even'">
+				        		<p class="accContent">On {{m.date1}}, {{vm.data.fullName}} died at {{m.city}}, {{m.state}} in the county of {{m.county}} ,{{m.country}}.</p>
+				        		<p class="accContent" ng-hide="m.other==''">{{m.other}}</p>
+						    </div>
+				     	</div>
+					</collapsible-item>
+				  
+				  	<collapsible-item on-close="closeAllMedia()" ng-if="vm.cremations.length>0" item-title="Cremation" initially-open="false">
+				        <div ng-repeat="m in vm.cremations">
+				        	<div ng-class-odd="'odd'" ng-class-even="'even'">
+					        	<p class="accContent">On {{m.date1}}, at {{m.city}}, {{m.state}} in the county of {{m.county}}, {{vm.data.fullName}} was cremated.</p>
+					        	<p class="accContent" ng-hide="m.other==''">{{m.other}}</p>
+					        </div>
+				     	</div>
+					</collapsible-item>
+				  
+				  	<collapsible-item on-close="closeAllMedia()" ng-if="vm.probates.length>0" item-title="Probate" initially-open="false">
+				        <div ng-repeat="m in vm.probates">
+				        	<div ng-class-odd="'odd'" ng-class-even="'even'">
+				        		<p class="accContent">On {{m.date1}}, at {{m.city}}, {{m.state}} in the county of {{m.county}} the will for {{vm.data.fullName}} was probated.</p>
+				        		<p class="accContent" ng-hide="m.other==''">{{m.other}}</p>
+					        </div>
+				     	</div>
+					</collapsible-item>
+				  
+				  	<collapsible-item on-close="closeAllMedia()" ng-if="vm.wills.length>0" item-title="Will" initially-open="false">
+				        <div ng-repeat="m in vm.wills">
+				        	<div ng-class-odd="'odd'" ng-class-even="'even'">
+					        	<p class="accContent">On {{m.date1}}, at {{m.city}}, {{m.state}} in the county of {{m.county}} the will for {{vm.data.fullName}} was filed.</p>
+					        	<p class="accContent" ng-hide="m.other==''">{{m.other}}</p>
+					        </div>
+				     	</div>
+					</collapsible-item>
+				  
+				  	<collapsible-item on-close="closeAllMedia()" ng-if="vm.naturalizations.length>0" item-title="Naturalization" initially-open="false">
+				        <div ng-repeat="m in vm.naturaliztions">
+				        	<div ng-class-odd="'odd'" ng-class-even="'even'">
+					        	<p class="accContent">On {{m.date1}}, at {{m.city}}, {{m.state}} in the county of {{m.county}} {{vm.data.fullName}} became a naturalized citizen.</p>
+					        	<p class="accContent" ng-hide="m.other==''">{{m.other}}</p>
+					        </div>
+				     	</div>
+				  
+				  	<collapsible-item on-close="closeAllMedia()" ng-if="vm.emmigrations.length>0" item-title="Emmigration" initially-open="false">
+				        <div ng-repeat="m in vm.emmigrations">
+				        	<div ng-class-odd="'odd'" ng-class-even="'even'">
+					        	<p class="accContent">On {{m.date1}}, at {{m.city}}, {{m.state}} in the county of {{m.county}} {{vm.data.fullName}} emmigrated.</p>
+					        	<p class="accContent" ng-hide="m.other==''">{{m.other}}</p>
+					        </div>
+				     	</div>
+					</collapsible-item>
+				  
+				  	<collapsible-item on-close="closeAllMedia()" ng-if="vm.immigrations.length>0" item-title="Immigration" initially-open="false">
+				        <div ng-repeat="m in vm.immigrations">
+				        	<div ng-class-odd="'odd'" ng-class-even="'even'">
+					        	<p class="accContent">On {{m.date1}}, at {{m.city}}, {{m.state}} in the county of {{m.county}} {{vm.data.fullName}} immigrated.</p>
+					        	<p class="accContent" ng-hide="m.other==''">{{m.other}}</p>
+					     	</div>
+					    </div>
+					</collapsible-item>
+				  
+				  	<collapsible-item on-close="closeAllMedia()" ng-if="vm.census2.length>0" item-title="Census" initially-open="false">
+				        <div ng-repeat="m in vm.census2">
+				        	<div ng-class-odd="'odd'" ng-class-even="'even'">
+				        		<p class="accContent">The census at {{m.city}}, {{m.state}} in the county of {{m.county}} on {{m.date1}}, showed an event for {{vm.data.fullName}}.</p>
+					        	<p class="accContent" ng-hide="m.other==''">{{m.other}}</p>
+					        </div>
+				     	</div>
+					</collapsible-item>
+				  
+				  	<collapsible-item on-close="closeAllMedia()" ng-if="vm.graduation.length>0" item-title="Census" initially-open="false">
+				        <div ng-repeat="m in vm.graduation">
+				        	<div ng-class-odd="'odd'" ng-class-even="'even'">
+				        		<p class="accContent">On {{m.city}}, {{m.state}} in the county of {{m.county}} on {{m.date1}}, {{vm.data.fullName}} graduated.</p>
+					        	<p class="accContent" ng-hide="m.other==''">{{m.other}}</p>
+					        </div>
+				     	</div>
+					</collapsible-item>
+				  
+				  	<collapsible-item on-close="closeAllMedia()" ng-if="vm.other2.length>0" item-title="Other  Events" initially-open="false">
+				        <div ng-repeat="m in vm.other2">
+				        	<div ng-class-odd="'odd'" ng-class-even="'even'">
+					        	<p class="accContent">On {{m.date1}}, {{vm.data.fullName}} at {{m.city}}, {{m.state}} in the county of {{m.county}} {{vm.data.fullName}} had the following:</p>
+					        	<p class="accContent" ng-hide="m.other==''">{{m.other}}</p>
+					        </div>
+				     	</div>
+					</collapsible-item>
+				</ang-accordion>
+
+ 			     <h3 ng-show="vm.showAttributes.length>0">Attributes</h3>
+ 				 <p></p>
+ 
+				<ang-accordion icon-position="right" close-icon-url="/icon/right1.png" open-icon-url="/icon/down.png" one-at-a-time="true">
+				
+				  	<collapsible-item  on-close="closeAllMedia()" ng-if="vm.names.length>0" item-title="Name Change" initially-open="false">
+				       	<div ng-repeat="m in vm.names">
+				        	<div ng-class-odd="'odd'" ng-class-even="'even'">
+					   			<p class="accContent">On {{m.date1}}, at {{m.city}}, {{m.state}} in the county of {{m.county}}, {{m.country}}, {{vm.data.fullName}} changed his name.</p>
+					        	<p class="accContent" ng-hide="m.other==''">{{m.other}}</p>
+						    </div>
+						</div>
+					</collapsible-item>
+				
+				  	<collapsible-item  on-close="closeAllMedia()" ng-if="vm.descriptions.length>0" item-title="Description" initially-open="false">
+				       	<div ng-repeat="m in vm.descriptions">
+				        	<div ng-class-odd="'odd'" ng-class-even="'even'">
+					   			<p  class="accContent">On {{m.date1}} {{vm.data.fullName}} was described as:</p>
+					        	<p class="accContent" ng-hide="m.other==''">{{m.other}}</p>
+					        </div>
+						</div>
+					</collapsible-item>
+				
+				  	<collapsible-item on-close="closeAllMedia()" ng-if="vm.scholastics.length>0" item-title="Scholastic" initially-open="false">
+				       	<div ng-repeat="m in vm.scholastics">
+				        	<div ng-class-odd="'odd'" ng-class-even="'even'">
+					   			<p class="accContent">On {{m.date1}}, at {{m.city}}, {{m.state}} in the county of {{m.county}}, {{m.country}}, the following scholastic information for {{vm.data.fullName}} was found.</p>
+					        	<p class="accContent" ng-hide="m.other==''">{{m.other}}</p>
+					        </div>
+						</div>
+					</collapsible-item>
+				
+				  	<collapsible-item  on-close="closeAllMedia()" ng-if="vm.tribals.length>0" item-title="Tribal Origins" initially-open="false">
+				       	<div ng-repeat="m in vm.tribals">
+				        	<div ng-class-odd="'odd'" ng-class-even="'even'">
+					   			<p class="accContent">{{vm.data.fullName}} was a member of the following tribe:</p>
+					        	<p class="accContent" ng-hide="m.other==''">{{m.other}}</p>
+					        </div>
+						</div>
+					</collapsible-item>
+				
+				  	<collapsible-item  on-close="closeAllMedia()" ng-if="vm.occupations.length>0" item-title="Occupations" initially-open="false">
+				       	<div ng-repeat="m in vm.occupationss">
+				        	<div ng-class-odd="'odd'" ng-class-even="'even'">
+					   			<p class="accContent">On {{m.date1}}, at {{m.city}}, {{m.state}} in the county of {{m.county}}, {{m.country}}, {{vm.data.fullName}} had the following occupation.</p>
+					        	<p class="accContent" ng-hide="m.other==''">{{m.other}}</p>
+					        </div>
+						</div>
+					</collapsible-item>
+				
+				  	<collapsible-item on-close="closeAllMedia()"  ng-if="vm.possessions.length>0" item-title="Possessions" initially-open="false">
+				       	<div ng-repeat="m in vm.possessions">
+				        	<div ng-class-odd="'odd'" ng-class-even="'even'">
+					   			<p class="accContent">On {{m.date1}}, at {{m.city}}, {{m.state}} in the county of {{m.county}}, {{m.country}}, {{vm.data.fullName}} had the following items:</p>
+					        	<p class="accContent" ng-hide="m.other==''">{{m.other}}</p>
+						    </div>
+						</div>
+					</collapsible-item>
+				
+				  	<collapsible-item  on-close="closeAllMedia()" ng-if="vm.religious.length>0" item-title="Religious Affilation" initially-open="false">
+				       	<div ng-repeat="m in vm.religious">
+				        	<div ng-class-odd="'odd'" ng-class-even="'even'">
+					   			<p class="accContent">On {{m.date1}}, at {{m.city}}, {{m.state}} in the county of {{m.county}}, {{m.country}}, {{vm.data.fullName}} was affiliated with the following religion:</p>
+					        	<p class="accContent" ng-hide="m.other==''">{{m.other}}</p>
+					        </div>
+						</div>
+					</collapsible-item>
+				
+				  	<collapsible-item  on-close="closeAllMedia()" ng-if="vm.residences.length>0" item-title="Residences" initially-open="false">
+				       	<div ng-repeat="m in vm.residences">
+				        	<div ng-class-odd="'odd'" ng-class-even="'even'">
+					   			<p class="accContent">On {{m.date1}}, {{vm.data.fullName}} lived at {{m.city}}, {{m.state}} in the county of {{m.county}}, {{m.country}}.</p>
+					        	<p class="accContent" ng-hide="m.other==''">{{m.other}}</p>
+					        </div>
+						</div>
+					</collapsible-item>
+				
+				  	<collapsible-item  on-close="closeAllMedia()" ng-if="vm.titles.length>0" item-title="Titles" initially-open="false">
+				       	<div ng-repeat="m in vm.titles">
+				        	<div ng-class-odd="'odd'" ng-class-even="'even'">
+					   			<p class="accContent">On {{m.date1}}, at {{m.city}}, {{m.state}} in the county of {{m.county}}, {{m.country}} {{vm.data.fullName}} received the following title.</p>
+					        	<p class="accContent" ng-hide="m.other==''">{{m.other}}</p>
+					        </div>
+						</div>
+					</collapsible-item>
+				
+				  	<collapsible-item on-close="closeAllMedia()"  ng-if="vm.castes.length>0" item-title="Caste" initially-open="false">
+				       	<div ng-repeat="m in vm.castes">
+				        	<div ng-class-odd="'odd'" ng-class-even="'even'">
+					   			<p class="accContent">On {{m.date1}}, at {{m.city}}, {{m.state}} in the county of {{m.county}}, {{m.country}} {{vm.data.fullName}} was a member of the following caste:</p>
+					        	<p class="accContent" ng-hide="m.other==''">{{m.other}}</p>
+					        </div>
+						</div>
+					</collapsible-item>
+				  
+				  	<collapsible-item on-close="closeAllMedia()" ng-if="vm.other3.length>0" item-title="Other Attribute" initially-open="false">
+				        <div ng-repeat="m in vm.other3">
+				        	<div ng-class-odd="'odd'" ng-class-even="'even'">
+					        	<p class="accContent"">On {{m.date1}}, {{vm.data.fullName}} at {{m.city}}, {{m.state}} in the county of {{m.county}} {{vm.data.fullName}} had the following attribute:</p>
+					        	<p class="accContent" ng-hide="m.other==''">{{m.other}}</p>
+					        </div>
+				     	</div>
+					</collapsible-item>
+				</ang-accordion>
+			</div>	
+		</div>
+	</div>
+
+	<div layout="column" layout-align="center center" layout-padding>
+	
+	<div layout="column" layout-align="center center">
+		<img ng-src="/sheet/profilePhotos/{{vm.data.mainID}}.jpeg" height="232" width="340" />
+	</div>
+	<h3 layout="row" layout-align="center center" flex="100">
+		{{vm.data.fullName}}&nbsp;
+	</h3>
+	
+	<div ng-show="vm.data.numFathers>0 || vm.data.numMothers>0" class="md-title">Parents</div>
+
+	<div ng-show="vm.data.numFathers>0 || vm.data.numMothers>0" class="md-subhead" layout="row" layout-align="center center">							
+		<div class="md-subhead" layout="column" layout-align="start end">							
+			<span>Father:&nbsp;</span>
+			<span>Mother:&nbsp;</span>
+		</div>
+		<div class="md-subhead" layout="column" layout-align="start start">							
+			<span ng-class="{textFit:true, private:vm.data.doBlur}">{{vm.data.fathers[vm.data.curFather].fullName}}</span>						
+			<span ng-class="{textFit:true, private:vm.data.doBlur}">{{vm.data.mothers[vm.data.curMother].fullName}}</span>							
+		</div>
+	</div>
+
+	<div ng-show="vm.data.numChildren>0" class="md-title">Children</div>
+
+	<div ng-show="vm.data.numChildren>0" layout="row" layout-align="left">
+		<div layout="column" layout-align="left">
+			<div class="md-title">Name</div>								
+			<div ng-repeat="x in vm.data.children" class="md-subhead">
+				<div ng-dblclick="vm.showDetails(x.mainID)" ng-class="{private:x.living}" class="curUser">
+					{{x.fullName}}
+				</div> 
+			</div>
+		</div>
+
+		<div layout="column" layout-align="left">								
+			<div class="md-title">Dates</div>								
+			<div ng-repeat="x in vm.data.children" class="md-subhead">
+				<div ng-class="{private:x.living}">
+					{{x.birthYear}}&mdash;{{x.deathYear}}
+				</div>
+			</div>
+		</div>				
+	</div>	
+	</div>
+
+	<div ng-show="vm.showMedia.length>0" flex="30" layout="column" layout-align="start center">
+	
+		<div layout="row" layout-align="start start">		
+			<div layout="column" layout-align="start start">			
+			    <h3>Media</h3>
+			    <p></p>
+			
+				<ang-accordion icon-position="right" close-icon-url="/icon/right1.png" open-icon-url="/icon/down.png" one-at-a-time="true" collapseAll="true">
+				
+				  	<collapsible-item on-close="closeAllMedia()"  ng-if="vm.stories.length>0" item-title="Stories" initially-open="false" >
+				       	<div ng-repeat="m in vm.stories">
+				   			<div ng-class-odd="'odd'" ng-class-even="'even'" ng-click="data.setStoryDiv($index);vm.data.open0=true">
+				   				<p class="accContent">{{m.theTitle}}</p>
+				   			</div>
+						</div>
+					</collapsible-item>
+			
+			 	  	<collapsible-item  on-close="closeAllMedia()" ng-if="vm.videos.length>0" item-title="Video" initially-open="false">
+				       	<div ng-repeat="m in vm.videos">
+				   			<div ng-class-odd="'odd'" ng-class-even="'even'" ng-click="data.setVideoDiv($index);vm.data.open1=true">
+				   				<p class="accContent">{{m.theTitle}}</p>
+				   			</div>
+						</div>
+					</collapsible-item>
+			
+			 	  	<collapsible-item on-close="closeAllMedia()"  ng-if="vm.audios.length>0" item-title="Audio" initially-open="false" >
+				       	<div ng-repeat="m in vm.audios">
+			   				<div ng-class-odd="'odd'" ng-class-even="'even'" ng-click="data.setAudioDiv($index);vm.data.open2=true">
+				   				<p class="accContent">{{m.theTitle}}</p>
+							</div>
+						</div>
+					</collapsible-item>
+			
+			 	  	<collapsible-item on-close="closeAllMedia()"  ng-if="vm.images.length>0" item-title="Images" initially-open="false">
+				       	<div ng-repeat="m in vm.images">
+				   			<div ng-class-odd="'odd'" ng-class-even="'even'" ng-click="data.setImgDiv($index);vm.data.open3=true">
+				   				<p class="accContent">{{m.theTitle}}</p>
+				   			</div>
+						</div>
+					</collapsible-item>
+				</ang-accordion>	
+			</div>
+		</div>	
+	</div>
+	
+	<div ng-show="vm.data.open0" style="position:absolute;z-index:20;left:50px;top:50px;">
+<div style="background-color:darkBlue;text-align:right;border-top-left-radius:5px;border-top-right-radius:5px" flex="100" layout="row" layout-align="end end">
+	<span ng-click="vm.data.open0=false"><md-icon style="color:white">close</md-icon></span>
+</div>
+		<div style="max-height:400px;width:600px;border:solid thin black;padding:10px;overflow:scroll;background-color:white;">
+			<h3>{{vm.data.theTitle}}</h3>
+			{{vm.data.theContent}}
+		</div>
+	</div>
+	<div ng-show="vm.data.open1" style="position:absolute;z-index:20;left:50px;top:50px;">
+<div style="background-color:darkBlue;text-align:right;border-top-left-radius:5px;border-top-right-radius:5px" flex="100" layout="row" layout-align="end end">
+	<span ng-click="vm.data.open1=false"><md-icon style="color:white">close</md-icon></span>
+</div>
+		<div style="max-height:400px;width:600px;border:solid thin black;padding:10px;overflow:scroll;background-color:white;">
+			<h3>{{vm.data.theTitle}}</h3>
+			<div id="videoTag" layout="row" layout-align="center center"></div>
+		</div>
+	</div>
+	<div ng-show="vm.data.open2" style="position:absolute;z-index:20;left:50px;top:50px;">
+<div style="background-color:darkBlue;text-align:right;border-top-left-radius:5px;border-top-right-radius:5px" flex="100" layout="row" layout-align="end end">
+	<span ng-click="vm.data.open2=false"><md-icon style="color:white">close</md-icon></span>
+</div>
+		<div style="max-height:400px;width:600px;border:solid thin black;padding:10px;overflow:scroll;background-color:white;">
+			<h3>{{vm.data.theTitle}}</h3>
+			<div id="audioTag" layout="row" layout-align="center center"></div>
+		</div>
+	</div>
+	<div ng-show="vm.data.open3" style="position:absolute;z-index:20;left:50px;top:50px;">
+<div style="background-color:darkBlue;text-align:right;border-top-left-radius:5px;border-top-right-radius:5px" flex="100" layout="row" layout-align="end end">
+	<span ng-click="vm.data.open3=false"><md-icon style="color:white">close</md-icon></span>
+</div>
+		<div style="max-height:400px;width:600px;border:solid thin black;padding:10px;overflow:scroll;background-color:white;">
+			<h3>{{vm.data.theTitle}}</h3>
+			<div layout="row" layout-align="center center">
+				<img ng-pinch-zoom max-scale=“4” ng-src="{{vm.data.theFile}}" /> 
+			</div>
+		</div>
+	</div>
+</div>
+		

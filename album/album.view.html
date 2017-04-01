@@ -1,0 +1,216 @@
+<div class="check-element animate-show" id="canvas" layout="column" layout-align="center center">
+		<div id="book-wrapper">
+			<div id="book-zoom" class="animate" style="visibility:visible">
+				<div id="flipbook" class='book-transform flipbook animated'>
+					
+					<div ignore=true align="center" id="page1" class="hard">
+						Scrapbook for<br>
+						{{vm.person.fullName}}<br><br>
+						<img ng-src="/sheet/profilePhotos/{{vm.person.mainID}}.jpeg"></img>
+						
+						<div style="margin-top:200px;font-size:14px;line-height:20px" flex="90">
+							Use the left and right arrow keys on you keyboard to turn pages. After opening the album, you can also move the mouse to the top right or left corner of a page, press the mouse button, and drag the mouse to the left or right to turn a page.
+						</div>
+					</div>
+
+					<div ignore=true class="hard frontFlyleaf" page="2">
+						<div class="p2 depth"></div> 
+						<img ng-src="album/images/insideCover.png"></img>
+					</div>
+					
+					<div ignore=true page="3" class="odd own-size frontFlyleaf">
+						<img ng-src="album/images/flyleaf.png">
+					</div>
+					
+					<div page="4" class="page even own-size"></div>
+					<div page="5" class="page odd own-size">
+						<div flex=1>
+							<div class="table-contents" style="width:500px">
+								<h1>Contents</h1>
+								<ul>
+									<li><a href="#page/6">A Space Shuttle Video <span>1</span></a></li>
+									<li><a href="#page/7">Mother's Favorite Recipe <span>2</span></a></li>
+									<li><a href="#page/8">Birth Certificate <span>3</span></a></li>
+									<li><a href="#page/9">Recordings of Dad's Reminisces <span>4</span></a></li>
+									<li><a href="#page/10">NYC at Night <span>5</span></a></li>
+									<li><a href="#page/11">A Growing-up Story <span>6</span></a></li>
+									<li><a href="#page/12">Another Story<span>7</span></a></li>
+									<li><a href="#page/13">A Video of the Earth From Space <span>8</span></a></li>
+									<li><a href="#page/14">The trip to Africa <span>9</span></a></li>
+									<li><a href="#page/15">A Glorius Sunset<span>10</span></a></li>
+									<li><a href="#page/16">Everyone is Taking Selfies <span>11</span></a></li>
+									<li><a href="#page/17">Our Cat<span>12</span></a></li>
+								</ul>
+							</div>
+						</div>
+						<span class="page-number">i</span>
+					</div>
+					
+					<div page="6" class="page even own-size">
+						<div flex="100" class="book-content">
+							<h1>Space Shuttle</h1>							
+							<p class="capital">
+								This is one of the last space shuttle launches. The video turned out great. Be sure to play it. It's well worth the wait to view it.
+							</p>
+							<div style="position:absolute;z-index:200;left:75px">
+								<video width="320" height="240" controls>
+									<source ng-src="/album/content/currentMovies/launch.mp4" type="video/mp4">
+								</video>
+							</div>							
+						</div>							
+						<span class="page-number">1</span>
+					</div>
+					
+					<div page="7" class="page odd own-size">
+						<div class="book-content">
+							<h1>My Mom's Bread Recipe</h1>						
+							<p class="capital">Here's a basic yeast-risen white bread that bakes up deliciously golden brown. I enjoy the aroma of freshly baked homemade bread in my kitchen.</p>					
+							<div style="overflow:scroll;height:300px">
+								<p>
+									Directions
+								</p>
+								<p>
+									In a large bowl, dissolve yeast in warm water. Add the sugar, salt, oil and 3 cups flour. Beat until smooth. Stir in enough remaining flour, 1/2 cup at a time, to form a soft dough.
+									Turn onto a floured surface; knead until smooth and elastic, about 8-10 minutes. Place in a greased bowl, turning once to grease the top. Cover and let rise in a warm place until doubled, about 1-1/2 hours.
+									Punch dough down. Turn onto a lightly floured surface; divide dough in half. Shape each into a loaf. Place in two greased 9x5-in. loaf pans. Cover and let rise until doubled, about 30-45 minutes.
+									Bake at 375° for 30-35 minutes or until golden brown and bread sounds hollow when tapped. Remove from pans to wire racks to cool. Yield: 2 loaves (16 slices each).
+								</p>
+							</div>
+						</div>						
+						<span class="page-number">2</span>
+					</div>
+					
+					<div page="8" class="page even own-size">
+						<div flex="100" class="book-content">					
+							<h1 style="text-align:center">My Birth Certificate</h1>						
+							<p class="center-pic">
+								<img ng-src="album/content/currentDocs/birth.jpg" style="width:310px; height:222px;">
+							</p>					
+						</div>						
+						<span class="page-number">3</span>
+					</div>
+					
+					<div page="9" class="page odd own-size">
+						<div flex="100" class="book-content">							
+							<h1>War Memories</h1>							
+							<p class="capital">
+								In 1995 dad talked about his war Reminisces (one of only a few times that he did so.) Fortunately, a tape recorder was available and the two recordings below were made.
+							</p>							
+							<div style="text-align:center">
+								<audio controls>
+								<source src="/album/content/currentAudio/1.mp3" type="audio/mpeg">
+								</audio>
+							</div>
+							<p></p>
+							<div style="text-align:center">
+								<audio controls>
+								<source ng-src="/album/content/currentAudio/2.mp3" type="audio/mpeg">
+								</audio>
+							</div>
+						</div>					
+						<span class="page-number">4</span>					
+					</div>
+					
+					<div page="10" class="page even own-size">
+						<div flex="100" class="book-content">						
+							<h1>New York City at Night</h1>							
+							<p class="capital">
+								The family took a trip to the northeastern states including Pennsylvania, Vermont, New Hampshire, Maine, Connecticutt, and New York justice but it is still cool.
+							</p>
+							<div style="position:absolute;z-index:200;left:75px">
+								<video width="320" height="240" controls>
+									<source ng-src="/album/content/currentMovies/NYC.mp4" type="video/mp4">
+								</video>
+							</div>
+						</div>
+						<span class="page-number">5</span>					
+					</div>
+					
+					<div page="11" class="page odd own-size">
+						<div flex="100" class="book-content">
+							<h1>Growing Up</h1>						
+							<p class="capital">Here is a story from Dad about his boyhood memories</p>
+							<div style="position:absolute;z-index:200;left:75px;text-overflow:scroll">
+								<object style="height:350px" data="content/currentStory/story1.txt"> </object>
+							</div>
+							<span class="page-number">6</span>	
+						</div>				
+					</div>
+					
+					<div page="12" class="page even own-size">
+						<div flex="100" class="book-content">
+							<h1>Another Story About Dad</h1>
+							<p class="capital">Here is a story from Dad about his boyhood memories</p>
+							<div style="position:absolute;z-index:200;left:75px;text-overflow:scroll">
+								<object style="height:350px" data="content/currentStory/story2.txt"> </object>
+							</div>
+							<span class="page-number">7</span>
+						</div>
+					</div>
+					
+					<div page="13" class="page odd own-size">
+						<div flex="100" class="book-content">						
+							<h1>Video of Earth from Space</h1>							
+							<p class="capital">
+								Not really family oriented, but I just think this is a beautiful video.
+							</p>
+							<div style="position:absolute;z-index:200;left:75px">
+								<video width="320" height="240" controls>
+									<source ng-src="/album/content/currentMovies/earth.mp4" type="video/mp4">
+								</video>
+							</div>							
+						</div>						
+						<span class="page-number">8</span>					
+					</div>
+					
+					<div page="14" class="page even own-size">
+						<div flex="100" class="book-content">						
+							<h1>Our Trip to Africa</h1>						
+							<p class="capital">
+								We took this photo on our trip to Africa. He reminds me a lot of the MGM lion!
+							</p>						
+							<p style="text-align:center">
+								<img ng-src="album/content/currentPhotos/6.jpg"></img>
+							</p>						
+						</div>						
+						<span class="page-number">9</span>						
+					</div>
+					
+					<div page="15" class="page odd own-size">
+						<div flex="100" class="book-content">						
+							<h1>A Beautiful Sunset</h1>						
+							<p class="capital">
+								I just couldn't resist taking this photo on our trip to Colorado. Hope you enjoy it also.
+							</p>
+							<p style="text-align:center">
+								<img ng-src="album/content/currentPhotos/2.jpg"></img>
+							</p>						
+						</div>						
+						<span class="page-number">10</span>						
+					</div>
+					
+					<div page="16" class="page even own-size">
+						<div flex="100" class="book-content">						
+							<h1>Everyone Is Taking Selfies</h1>						
+							<p class="capital">
+								Just a funny picture.
+							</p>
+							<p style="text-align:center">
+								<img ng-src="album/content/currentPhotos/5.jpg"></img>
+							</p>						
+						</div>						
+						<span class="page-number">11</span>						
+					</div>
+					
+					<div class="hard back-side backFlyleaf" page="17"><div class="depth"></div>
+						<img ng-src="album/images/insideBackCover.png"></img>														
+					</div>
+					
+					<div id="page18" class="hard backCover" layout="row" layout-align="center center">
+						<div>&copy; 2016, {{params.appName}}</div>
+					</div>				
+				</div>
+			</div>
+		</div>
+
+	</div>

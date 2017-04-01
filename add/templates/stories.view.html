@@ -1,0 +1,28 @@
+<!-- ***********************************************************************
+
+	 media card
+	 
+	 *********************************************************************** 
+-->
+ <div class="my-subcard" flex="75" layout-padding layout="column" layout-align="center center">
+	<form ng-submit="vm.onSubmit4()" id="theForm4" name="theForm4" novalidate>
+		<fieldset>			
+			<legend>Stories about <span drop="nameDrop4" class="bin" ng-dblClick="vm.showDetails4($index)" id="curUser4" dropall><span>{{vm.data.fullName}}</span></span></legend>
+			<md-input-container>
+				<label>Title</label>
+				<input style="width:500px" type="text" ng-model="vm.data.theTitle" required md-maxlength="150">
+			</md-input-container>
+			   		<div class="my-required" layout-padding>*Required</div>
+ 	 		<div layout="row" flex layout-align="start center">	
+			 	<div flex="85" layout="column" layout-align="center center">	
+					<div class="md-title">Compose a Story or Drop a File</div>
+<!-- 					<trix-editor id="edit-trix-editor" class="editor trix-content enable-text-selection" style="white-space:pre-line;overflow:scroll" placeholder="Start typing a story or drop a file here." ng-model-options="{ updateOn: 'blur' }" spellcheck="true" ng-model="vm.data.theContent" angular-trix trix-initialize="vm.trixInitialize(e, editor);" trix-change="vm.trixChange(e, editor);" trix-selection-change="vm.trixSelectionChange(e, editor);" trix-focus="vm.trixFocus(e, editor);" trix-blur="vm.trixBlur(e, editor);" trix-file-accept="vm.trixFileAccept(e, editor);"></trix-editor> -->
+				</div>
+			</div>
+		</fieldset>
+		
+		<div style="margin-left:-90px" ui-view="storiesButtons" autoscroll="false"></div>
+	</form>
+				
+	<div ui-view="storyCreatedList" autoscroll="false"></div>
+</div>

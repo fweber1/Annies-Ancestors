@@ -1,0 +1,48 @@
+<!-- ***********************************************************************
+
+	 Event card finished, no styles, 2/6/2017
+	 
+	 *********************************************************************** 
+-->
+	 
+<div ng-cloak class="my-subcard" flex="90" layout-padding layout="row">
+	<form ng-submit="vm.onSubmit1()" id="theForm1" name="theForm1" novalidate>
+		<fieldset>			
+			<legend>{{vm.data.selectedType.label}} Data for 
+				<span drop="nameDrop1" class="bin curUser" ng-dblClick="vm.showDetails1($index)" id="curUser1" dropall>
+					{{vm.data.fullName}} 
+				</span>
+			</legend>
+				<div style="margin-left:30px;margin-bottom:20px;font-size:18px" ng-show="vm.data.selectedType.label=='Birth' || vm.data.selectedType.label=='Adoption'"> 
+					with Father: 
+					<span drop="nameDrop1a" class="bin curUser" ng-dblClick="vm.showDetails1($index)" id="curUser1a" dropall>
+						{{vm.data.father}}
+					</span>			
+					<i style="margin-left:10px" class="material-icons" ng-click="vm.searchPage()">search</i>			
+					<md-tooltip style="margin-left:-120px;margin-top:-30px" md-direction="bottom">
+      					Search Database for Existing Person
+    				</md-tooltip>				
+					
+				</div>
+				<div style="margin-left:30px;margin-bottom:20px;font-size:18px" ng-show="vm.data.selectedType.label=='Birth' || vm.data.selectedType.label=='Adoption'"> 
+					and Mother: 
+					<span drop="nameDrop1b" class="bin curUser" ng-dblClick="vm.showDetails1($index)" id="curUser1b" dropall>
+						{{vm.data.mother}}
+					</span>			
+					<i style="margin-left:10px" class="material-icons" ng-click="vm.searchPage()">search</i>
+					<md-tooltip style="margin-left:-120px;margin-top:-30px" md-direction="bottom">
+      					Search Database for Existing Person
+    				</md-tooltip>				
+					
+				</div>
+				<div style="width:900px" layout-padding>
+		 			<div ui-view="eventDates" autoscroll="false" layout-fill></div>
+		 			<div ui-view="eventPlaces" autoscroll="false" layout-fill></div>
+				   	<div class="my-required">*Required</div>
+	 				<div ui-view="eventButtons" autoscroll="false"></div>
+			</div>	
+		</fieldset>
+	</form>
+	
+	<div ui-view="eventCreatedList" autoscroll="false"></div>
+</div>		

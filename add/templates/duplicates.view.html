@@ -1,0 +1,36 @@
+<md-dialog>
+	<md-dialog-content> 
+		<div flex="70">	
+			<div style="margin:15px">
+				<div layout="row" layout-align="space-between start">
+					<h1>{{vm.nHits}} people already exist in {{vm.params.appName}} with that name</h1>
+					<md-button class="md-raised md-primary" ng-disabled="vm.selectedRow==-1" layout="row" layout-align="center end" aria-label="Not Listed" ng-click="vm.haveMatch()">
+						Match
+					</md-button>
+		  
+		  			<md-button class="md-raised md-primary" aria-label="Use Selected" ng-click="vm.create()">
+						Create
+					</md-button>
+
+		  			<md-button class="md-raised md-primary" aria-label="Cancel" ng-click="vm.closeDialog()">
+						Cancel
+					</md-button>
+				</div>
+				<p>Click the row (if any) of the person you tried to add.</p>
+				<table ng-table="vm.tableParams">
+					<tr ng-dblClick="vm.showDetails($index)" class="transformable" ng-repeat="user in $data" ng-click="vm.setSelected($index)" ng-class="{selectedRow: $index === vm.selectedRow}">
+						<td title="Avatar"><img class="avatar" back-Img-Comm="{{user.mainID}}"></td>
+						<td title="'Given&nbsp;Name'">{{user.givenName}}</td>
+						<td title="'Middle'">{{user.middleName}}</td>
+						<td title="'Surname'">{{user.surname}}</td>
+						<td title="'Gender'">{{user.gender}}</td>
+						<td ng-class="{private:user.living}" title="'Birth Date'">{{user.birthDate}}</td>
+						<td ng-class="{private:user.living}" title="'Birth City'">{{user.birthCity}}</td>
+						<td ng-class="{private:user.living}" title="'Death Date'">{{user.deathDate}}</td>
+						<td ng-class="{private:user.living}" title="'Death City'">{{user.deathCity}}</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</md-dialog-content>
+</md-dialog>

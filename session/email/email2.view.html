@@ -1,0 +1,36 @@
+﻿<div ng-cloak class="my-card">
+ 	<md-toolbar class="md-accent my-page-header">
+		<div layout="row" layout-align="center center">
+			<div>Change E-mail for {{vm.params.appName}}</div>
+		</div>
+	</md-toolbar>
+ 	
+ 	<section focus-on-show="vm.setFocus" class="my-subcard" flex="40">
+		<form name="emailForm" id="emailForm" ng-submit="vm.changeEmail()" novalidate>
+		 		<div flex flex-fill layout="column">
+		 			<h3 >Update Email</h3>
+				 	<md-input-container>
+						<label>New E-mail</label>
+			 			<input type="email" name="email1" id="email1" class="form-control firstInput" ng-model="vm.data.email1" aria-label="email" ng-pattern="/^.+@.+\..+$/" required />
+					</md-input-container>
+		
+					 <md-input-container md-autofocus style="margin-top:-20px">
+						<label>Verify E-mail</label>
+			 			<input type="email" name="email2" id="email2" class="form-control" ng-model="vm.data.email2" ng-pattern="/^.+@.+\..+$/" required />
+					</md-input-container>
+				</div>
+				
+				<div layout="row">
+						<md-button type="submit" class="md-raised md-primary" ng-disabled="manageForm.$invalid ">
+							Save
+						</md-button>
+				
+						<md-button class="md-raised md-primary" ng-click="vm.doCancel()">
+							Cancel
+						</md-button>
+				<div class="my-required">*Required</div>
+			</div>
+		
+		</form>
+	</section> 
+ </div>

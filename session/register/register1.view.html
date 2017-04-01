@@ -1,0 +1,41 @@
+﻿<div class="my-card">
+ 	<md-toolbar class="md-accent my-page-header">
+		<div layout="row" layout-align="center center">
+			<div>Register for Access to {{vm.params.appName}}</div>
+		</div>
+	</md-toolbar>
+ 	
+	<div class="my-subcard" flex="40">
+		 <section focus-on-show="vm.setFocus">
+	 		<form name="registerForm" id="loginForm" ng-submit="vm.sendCode()" novalidate>
+		 		<div flex flex-fill layout="column">
+		 			<h3>Register</h3>
+				 	<md-input-container >
+						<label>First Name</label>
+			 			<input type="text" name="givenName" id="givenName" class="form-control firstInput" ng-model="vm.data.givenName" required />
+					</md-input-container>
+					
+				 	<md-input-container style="margin-top:-20px">
+						<label>Last Name</label>
+			 			<input type="text" name="surname" id="surname" class="form-control" ng-model="vm.data.surname" required />
+					</md-input-container>
+	
+				 	<md-input-container style="margin-top:-20px">
+						<label>E-mail</label>
+			 			<input type="email" name="email" id="email" class="form-control" ng-model="vm.data.email" ng-pattern="/^.+@.+\..+$/" required />
+					</md-input-container>
+				</div>
+		
+				<div class="my-required">*Required</div>
+			
+				<md-button type="submit" class="md-raised md-primary" ng-click="vm.sendCode()" ng-disabled="registerForm.$invalid">
+					Save
+				</md-button>
+			
+				<md-button class="md-raised md-primary" ng-click="vm.doLogin()">
+					Cancel
+				</md-button>
+			</form>
+		</section>
+	</div>
+</div> 

@@ -1,0 +1,99 @@
+<!-- ***********************************************************************
+
+	 media card
+	 
+	 to do:
+	 
+	 	share media between other people in the media
+	 
+	 *********************************************************************** 
+-->
+ <div ng-cloak class="my-subcard" flex="90" layout-padding>
+	<section layout="row" layout-sm="column" layout-align="end center" layout-wrap>
+	  	<div layout="row" layout-align="start center" flex>
+			<legend>{{data.selectedType.label}}Media Files Related to 
+				<span class="curUser" ng-dblClick="vm.showDetails5(vm.data.mainID)">
+				{{vm.data.fullName}}
+				</span>
+				<span style="color:teal" class="curUser"><i class="material-icons" ng-click="vm.searchPage1(vm.params.curPersonID,'main')">search</i></span>
+	   				<span class="curUser" ng-show="vm.data.other" ng-dblClick="vm.showDetails5(vm.data.mainID)" style="margin-left:50px;color:red">
+	   					This datum is owned by {{vm.data.ownerName}}. 
+	   					<i class="material-icons" style="color:black;margin-top:-5px">email</i>
+	    				<md-checkbox aria-label="send email"></md-checkbox>
+	   				</span>		
+			</legend>    
+			<span flex></span>
+	  	</div>
+		<span layout-padding ng-click="vm.doAdd5()" style="color:teal" class="curUser"><i class="material-icons">person_add</i></span>
+		<span ng-click="vm.doDelete5()" style="color:teal" class="curUser"><i class="material-icons">delete</i></span>
+	</section>
+
+	<form ng-submit="vm.onSubmit4()" id="theForm4" name="theForm4" novalidate>
+			
+			<div layout="row" layout-align="center center" flex="100">
+				<div ng-show="vm.data.showType" flex="30">
+					<md-input-container>
+						<label>Select a Media File</label>
+						<md-select ng-model="vm.data.selected" ng-change="vm.doChange(false)">
+							<md-select-header> <span>&nbsp;&nbsp;Video - </span></md-select-header>						
+							<md-option ng-value="item.id" ng-repeat="item in vm.data.videos track by item.id">{{item.theTitle}}</md-option>
+							<md-select-header> <span>&nbsp;&nbsp;Audio - </span></md-select-header>						
+							<md-option ng-value="item.id" ng-repeat="item in vm.data.audios track by item.id">{{item.theTitle}}</md-option>
+							<md-select-header> <span>&nbsp;&nbsp;Image - </span></md-select-header>						
+							<md-option ng-value="item.id" ng-repeat="item in vm.data.images track by item.id">{{item.theTitle}}</md-option>
+						</md-select>
+					</md-input-container>
+				</div>
+
+				<md-input-container flex="30">
+					<label>Short Title</label>
+					<input type="text" ng-model="vm.data.details.theTitle" required md-maxlength="30">
+				</md-input-container>
+	 
+	 			<md-input-container flex>
+					<label>Long Title</label>
+					<input type="text" ng-model="vm.data.details.longTitle" md-maxlength="80">
+				</md-input-container>
+ 	 		</div>
+ 			<div class="my-required" layout-padding>*Required</div>
+ 	 		
+ 				<div ng-show="vm.data.showType" layout="column" layout-align="center center">
+		 	 		<div ng-show="vm.data.showVideos">	
+						<h3>{{vm.data.details.theTitle}}</h3>
+						<div>
+							<video id='video' width="320" height="240" controls>
+							  <source ng-src="{{vm.data.details.theFile}}" type="video/mp4">
+							  <source ng-src="{{vm.data.details.theFile}}" type="video/mp3">
+							  <source ng-src="{{vm.data.details.theFile}}" type="video/ogg">
+							</video>			
+						</div>
+					</div>
+					
+					<div ng-show="vm.data.showAudios" style="max-height:400px;width:600px;border:solid thin black;padding:10px;overflow:scroll;background-color:white;">
+						<h3>{{vm.data.details.theTitle}}</h3>
+						<div>
+							<audio controls>
+						  		<source ng-src="{{vm.data.details.theFile}} type="audio/ogg">
+						  		<source ng-src="{{vm.data.details.theFile}} type="audio/mpeg">
+						  		<source ng-src="{{vm.data.details.theFile}} type="audio/mp3">
+							</audio>					
+						</div>
+					</div>
+				
+					<div ng-show="vm.data.showImages" style="max-height:400px;width:600px;border:solid thin black;padding:10px;overflow:scroll;background-color:white;">
+						<h3>{{vm.data.details.theTitle}}</h3>
+						<div layout="row" layout-align="center center">
+							<img ng-pinch-zoom max-scale=“4” ng-src="{{vm.data.details.theFile}}"> 
+						</div>
+					</div>
+		
+					<div ng-show="vm.data.showMsg" style="max-height:400px;width:600px;border:solid thin black;padding:10px;overflow:scroll;background-color:white;">
+						<h3>There are no media files to edit. Add some the return to this page.</h3>
+					</div>
+				</div>
+		<p></p>
+		<div ui-view="editMediaButtons" autoscroll="false"></div>
+	</form>
+</div>
+<div ui-view="editMediaInuseList" autoscroll="false"></div>
+<div ui-view="editMediaShowEmail" autoscroll="false"></div>

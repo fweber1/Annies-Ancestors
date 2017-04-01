@@ -1,0 +1,68 @@
+<div>
+
+	<md-content class="md-padding" style="position:relative;z-index:1">
+	
+	<div ng-show="vm.setFocus1" focus-on-show="vm.setFocus1" >
+			
+			<p>Note: You must have Skype (free) installed and have an account to do video chat.</p><br>
+			
+			<div layout="column" layout-align="center start">
+				<div layout="row" layout-align="start center">
+					<p>Skype can be down loaded for free.</p>
+						
+					<md-button ng-click="vm.download()" class="md-raised md-primary" aria-label="Communication">
+		 		Download
+		 			</md-button>
+
+					<p>Then the account can be created here:</p>
+				
+					<md-button ng-click="vm.register()" class="md-raised md-primary"aria-label="Communication" ng-click="">
+		 		Register
+		 			</md-button>
+				</div>
+				 	
+				<div layout="row" layout-align="start center">
+			 		<form name="skypeForm" id="skypeForm" ng-submit="vm.setSkype()" novalidate>
+					 	<md-input-container>
+							<label>Enter your Skype User Name</label>
+				 	<input type="text" name="skype" id="skype" class="form-control firstInput" ng-model="vm.username" aria-label="Skype User Name" required />
+						</md-input-container>
+			
+						<md-button type="submit" class="md-raised md-primary" ng-click="vm.doSubmit()" aria-label="Continue" >
+				 	Submit
+			 			</md-button>
+					</form>
+				</div>
+			</div>
+		</div>
+				
+		<div ng-show="vm.setFocus2" layout="row" layout-align="start start">	
+			<div layout="column" layout-align="start start">
+				<div id="SkypeButton_Call_weberutkedu_1">
+					<script type="text/javascript">
+						Skype.ui({"name": "call", "element": "SkypeButton_Call_weberutkedu_1", "participants": ["weberutkedu"], "imageSize": 24});
+					</script>			 		
+				</div>	
+			
+				<md-button type="button" class="md-raised md-primary" ng-click="vm.doCalendar()" aria-label="Reservation" >
+					Reservation
+				</md-button>
+			</div> 
+		
+			<div style="text-align:center;margin-left:20px;width:300px">	 
+				<h3>Invitation List</h3>
+				<div id="receipents" class="receipent">
+					<md-list layout="column">
+						<md-list-item ng-repeat="item in vm.globalList">							
+							<div id="list{{$index}}" class="md-list-item-text">
+							<img class="avatar" back-Img-Comm="{{item.mainID}}">	
+							{{item.givenName}} {{item.middleName}} {{item.surname}}
+							 </div>
+					</md-list-item>
+					</md-list>	
+				</div>
+			</div> 
+		</div>	
+	</md-content>
+	
+</div>

@@ -1,0 +1,35 @@
+﻿<div class="my-card">
+ 	<md-toolbar class="md-accent md-accent my-page-header">
+		<div layout="row" layout-align="center center">
+			<div>Register for Access to {{vm.params.appName}}</div>
+		</div>
+	</md-toolbar>
+ 	
+	<div class="my-subcard" flex="40">
+		<section focus-on-show="vm.setFocus" layout="row" layout-align="space-around start">
+			<form name="pswdForm" id="pswdForm" ng-submit="vm.getPswd()" novalidate>
+				 <md-input-container>
+					<label>Password</label>
+		 	<input type="password" name="password" id="password" class="form-control firstInput" ng-model="vm.data.password" required />
+				</md-input-container>
+
+				 <md-input-container style="margin-left:20px">
+					<label>VerifyPassword</label>
+		 	<input type="password" name="password2" id="password2" class="form-control" ng-model="vm.data.password2" required />
+				</md-input-container>
+		
+		<div class="my-required">*Required</div>
+
+				<div layout="row" layout-align="start start">
+					<md-button type="submit" class="md-raised md-primary" ng-disabled="pswdForm.$invalid ">
+						Save
+					</md-button>
+			
+					<md-button type="button" class="md-raised md-primary" href="vm.doCancel()">
+						Cancel
+					</md-button>
+		 </div>
+		</form>
+		</section>
+	</div>
+ </div>

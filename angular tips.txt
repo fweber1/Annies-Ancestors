@@ -1,0 +1,193 @@
+Set focus on first input field on the page (including for md-input) in an ng-show attribute:
+
+    angular
+        .module('root')																			// the app is named root
+		.directive('focusOnShow', function($timeout) {											// directive to set focus after ng-show runs
+		    return {																			// put focus-on-show="vm.toggle" attribute on ng-show
+		        restrict: 'A',																	// add class 'firstInput' to the input to receive focus
+		        link: function($scope, $element, $attr) {
+       				$scope.$watch($attr.focusOnShow,											// watchers on $scope are automatically removed when $scope is destroyed
+	                function (_focusVal) {
+	                    $timeout( function () {
+	                        var inputElement = $element.is('input')
+	                            ? $element
+	                            : $element.find('.firstInput');
+	                         if(_focusVal) {
+	                         	 inputElement.focus();
+	                             inputElement.select();											// may not be necessary, but ensures text (if any) is also selected
+	                         } else {
+	                             inputElement.blur();
+	                         }
+	                    });
+	                }
+            	);
+		
+		        }
+		    };
+		})		
+
+Then, put the following in the initialize section of the page controller:
+
+    	$(function() {																	// need following to prevent an error due to timing with the page load
+      		$timeout(function() {     													// The focus code runs when setFlocus1 changes value, which includes the initial
+ 				vm.setFocus1 = false;													// undefined value. $(function) executes once the page is ready for use, then
+ 			}).then(function successCallback(response) {vm.setFocus1 = true;})  		// the timeout forces a digest update. When that is complete then setFocus is initialized to false
+ 			} 																			// and when that is complete and another digest runs, then it is set to true which shows the page and sets focus on input
+      	);
+
+Finally, put the following in the element with the ng-show which contains the input you want to focus:
+
+		focus-on-show="vm.setFocus1"
+		
+and set a class named 'firstInput' on the input field:
+
+		class="firstInput"
+
+*****************************************************************************************************
+
+Set focus on a selected input field on the page (including for md-input) when no ng-show attribute container for the input field:
+				
+    angular
+        .module('root')																			// the app is named root
+ 		.directive('focus', function($timeout, $parse) {										// directive to set focus on labeled input 
+		    return {																			// put focus="vm.toggle" attribute on input tag to be focused
+		      restrict: 'A',
+		      link: function(scope, element, attrs) {
+		          scope.$watch(attrs.focus, function(newValue, oldValue) {						// watchers on $scope are automatically removed when $scope is destroyed
+		              if (newValue) { element[0].focus(); }
+		          });
+		          element.bind("blur", function(e) {
+		              $timeout(function() {
+		                  scope.$apply(attrs.focus + "=false"); 
+		              }, 0);
+		          });
+		          element.bind("focus", function(e) {
+		              $timeout(function() {
+			          		scope.$apply(attrs.focus + "=true");
+		              }, 0);
+		          })
+		      }
+		    }
+		  })
+
+Then, put the following in the initialize section of the page controller:
+
+    	$(function() {																	// need following to prevent an error due to timing with the page load
+      		$timeout(function() {     													// The focus code runs when setFlocus1 changes value, which includes the initial
+ 				vm.setFocus1 = false;													// undefined value. $(function) executes once the page is ready for use, then
+ 			}).then(function successCallback(response) {vm.setFocus1 = true;})  		// the timeout forces a digest update. When that is complete then setFocus is initialized to false
+ 			} 																			// and when that is complete and another digest runs, then it is set to true which shows the page and sets focus on input
+      	);
+
+Finally, put the following attribute in the input element you want to set focus:
+
+		focus="vm.setFocus1"
+
+*****************************************************************************************************
+
+Memory leaks:
+
+1. remove any added listeners (see next entry)
+2. each call to console.log will leak some memory
+3. $watch doesn't need to be removed if it is on the scope being destroyed
+
+*****************************************************************************************************
+
+Example of adding listener to an element (el in this example). IMPORTANT: you must destroy the listener when the scope is destroyed.
+Otherwise a memory leak is created and each time the directive executes, more memory is leaked until eventually the app slows to a stop.
+That's what the last three lines do:
+
+		var dragoverL = el.addEventListener('dragover',
+		function(e) {
+			e.dataTransfer.dropEffect = 'move';
+			this.classList.add('over');
+			if (e.preventDefault) e.preventDefault();
+				return false;
+				}, false
+			);
+			scope.$on('$destroy', function () {
+			angular.element(el).off('dragover', dragoverL);
+		});
+		
+The directive is executed whenever an attribute 'dragover' is encountered on an element. Then a class 'over' is added to the element.
+A separate directive removes it when the mouse leaves the element. e.preventDefault prevens 'bubbling' of the event of the tree.
+returnning false also stops it in some cases.
+	      
+*****************************************************************************************************
+
+Correct code to declare your controller (EmailController, located in file email.controller.js loaded in index.html):
+
+    angular
+        .module('root')
+        .controller('EmailController', EmailController);
+
+    EmailController.$inject = ['$location', '$route', 'SessionFactory', 'AuthenticationService', 'UserService', 'RandomStringService', 'UtilityFactory', '$crypto',  'Gparams'];
+    function EmailController(   $location,   $route,   SessionFactory,   AuthenticationService,   UserService,   RandomStringService,   UtilityFactory,   $crypto,    Gparams) {
+
+It is important that the $inject and function dependicies are in the same order. Angular style list the built in ones ($) first but
+really only the order is important.
+
+*****************************************************************************************************
+
+Dealing with stale caches:
+
+FLUSH TABLES will flush mySQL caches
+
+restart apache and php: sudo apachectl restart
+
+stop browser from caching:  (not perfect though)
+	<meta http-equiv="Expires" content="Mon, 26 Jul 1997 05:00:00 GMT">
+	<meta http-equiv="Pragma" content="no-cache">
+
+in PHP file:
+	header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
+	header('Pragma: no-cache');
+
+Controllers:
+
+Use controllers to:
+
+Set up the initial state of the $scope object.
+Add behavior to the $scope object.
+Do not use controllers to:
+
+Manipulate DOM — Controllers should contain only business logic. Putting any presentation logic into Controllers significantly affects its testability. Angular has databinding for most cases and directives to encapsulate manual DOM manipulation.
+Format input — Use angular form controls instead.
+Filter output — Use angular filters instead.
+Share code or state across controllers — Use angular services instead.
+Manage the life-cycle of other components (for example, to create service instances).
+
+**************************************************************************************************
+
+ngTable:
+
+params.filter({}) clears all filters
+
+vm.tableParams = new NgTableParams({ 
+ 	page	: 1,
+	count	: 6
+	},{
+	counts	: [],
+   	getData : function(params) {
+     		if(!angular.isDefined(vm.theData)) return													var results = vm.theData;				// see for details: https://github.com/esvit/ng-table/issues/876
+	   	var filteredData = vm.tableParams.filter() ? $filter('filter')(results, vm.tableParams.filter()) : results;
+		var sortedData = vm.tableParams.sorting() ? $filter('orderBy')(filteredData, vm.tableParams.orderBy()) : filteredData;
+		vm.tableParams.total(UtilityService.getLength(sortedData));
+		vm.tableData = sortedData;
+		vm.tableData = vm.tableData.slice((vm.tableParams.page()-1)*vm.tableParams.count(), vm.tableParams.page() * 				return vm.tableData			
+}
+
+Explaination:
+
+page 	: current page
+count	: rows/page
+counts	: array of numbers for how many rows per page navigation (lower right)
+getData	: create array of data to display on current page
+		For performance reasons, get the remote data in an outside function and reference the data structure (vm.theData)
+		The if prevent errors is getData is called before the remote data is retrieved
+		FilteredData is the reduced data set after applying table filters
+		sortedData is the sorted data set after applying table sort settings
+		vm.tableParams.total is the total number of rows of data
+		The vm.tableData slice line returns the current page of rows out of the entire dataset
+
+

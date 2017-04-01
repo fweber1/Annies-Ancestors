@@ -1,0 +1,62 @@
+<div class="my-card">
+	
+	<md-toolbar class="md-accent my-page-header">
+		<div flex flex-fill layout="row" layout-align="center center">Edit Personal Details for {{$parent.person.fullName}} in {{params.appName}}</div>
+	</md-toolbar>
+	<div class="step-number" layout="row" layout-align="end start" layout-padding >Step {{upload.step}}</div>
+
+<!-- ***********************************************************************
+
+	 Name and Profile photo card
+	 
+	 *********************************************************************** 
+-->
+    <md-tabs md-dynamic-height md-border-bottom>
+      <md-tab label="Military">
+        <md-content class="md-padding">
+          <h1 class="md-display-2">Military</h1>
+          <p>Details on military background goes here</p>
+        </md-content>
+      </md-tab>
+      <md-tab label="Events">
+        <md-content class="md-padding">
+          <h1 class="md-display-2">Statistics</h1>
+          <p>Things like marriage, kids, degrees, etc. goes here</p>
+        </md-content>
+      </md-tab>
+      <md-tab label="Attributes">
+        <md-content class="md-padding">
+          <h1 class="md-display-2">Personal</h1>
+          <p>Description and other physical attributes</p>
+        </md-content>
+      </md-tab>
+      <md-tab label="Religion">
+        <md-content class="md-padding">
+          <h1 class="md-display-2">Religion</h1>
+          <p>Religious details</p>
+        </md-content>
+      </md-tab>
+      <md-tab label="Relationships">
+        <md-content class="md-padding">
+          <h1 class="md-display-2">Relationships</h1>
+          <p>Family and Friend Relationships</p>
+        </md-content>
+      </md-tab>
+    </md-tabs>
+  </md-content>
+</div>
+
+<div flex="20" layout="row" layout-align="end center">
+	  <div id="uploadFile" ng-show="upload.step==2">
+	  	<form class="dropzone needsclick" novalidate>
+			<input type="hidden" ng-model="upload.personID" name="vm.personID">
+	
+			<div class="dz-message needsclick">
+		    	Drop a profile photo here for the newly added user.
+			</div>
+
+		</form>
+	</div>
+	
+</div>
+

@@ -1,0 +1,280 @@
+<div class="my-card">
+	
+	<md-toolbar class="md-accent my-page-header">
+		<div flex flex-fill layout="row" layout-align="center center">Add a New Person to {{params.appName}}</div>
+	</md-toolbar>
+	<div class="step-number" layout="row" layout-align="end start" layout-padding >Step {{upload.step}}</div>
+
+<!-- ***********************************************************************
+
+	 Name and Profile photo card
+	 
+	 *********************************************************************** 
+-->
+	<div ng-show="upload.step<3" class="my-subcard" flex="80" layout-padding layout="row" layout-align="start center">
+		<form ng-submit="onSubmit(newPerson)" id="newPerson" name="newPerson" novalidate style="margin-top:-15px">
+			<fieldset>			
+				<legend id="newName">Primary Name</legend>
+
+				<md-input-container>
+					<label>Name Prefix</label>
+					<input type="text" ng-model="addUser.namePrefix" name="namePrefix" aria-label="Name Prefix" size="7">
+	  
+			 	<md-input-container md-autofocus class="md-input-focused">
+					<label>Given Name</label>
+					<input ng-attr-autofocus="{{focusinControl}}" type="text" ng-model="addUser.givenName" name="givenName" aria-label="Given Name" required size="20">
+						<div ng-messages="newPerson.givenName.$error">
+							<div ng-message="required">This is required!</div>
+						</div>
+				</md-input-container>
+			  
+			 	<md-input-container>
+					<label>Middle Name</label>
+					<input type="text" ng-model="addUser.middleName" name="middleName" aria-label="Middle Name" size="20">
+				</md-input-container>
+		  
+				<md-input-container>
+					<label>Last Name</label>
+					<input type="text" ng-model="addUser.surname" name="surname" aria-label="surname" required size="20">
+					<div ng-messages="newPerson.surname.$error">
+						<div ng-message="required">This is required!</div>
+					</div>
+				</md-input-container>
+
+				<md-input-container>
+					<label>Name Suffix</label>
+					<input type="text" ng-model="addUser.nameSuffix" name="nameSuffix" aria-label="Name Suffix" size="7">
+				</md-input-container>
+   				
+   				<div class="my-required">*Required</div>
+
+				<div class="md-toolbar-tools edit-tools" style="margin-top:20px">
+					<md-button id="toggleMeta" class="md-raised md-primary" slide-toggle="#meta" ng-disabled="upload.step>1">
+						More
+					</md-button>
+
+					<md-button class="md-raised md-primary" ng-click="onReset()" ng-disabled="upload.step>1">
+						Clear
+					</md-button>
+ 
+					<md-button  type="submit" class="md-raised md-primary" ng-disabled="newPerson.$invalid || upload.step>1">
+						Save
+					</md-button>
+					
+					<div ng-show="upload.step>1" layout="row" layout-align="end center">
+						<md-button class="md-raised md-primary" ng-click="doStep()">
+							Next
+						</md-button>
+					</div>
+				</div>
+				
+				
+				<input id="triggerShowDups" slide-toggle="#derp" type="hidden" ng-model="addUser.userID" name="userID">
+
+			</fieldset>
+
+<!--<div id="myTray" style="position:relative">
+	<div class="metaSlideable" id="meta1" style="height:0;margin-left:20px;top:18px;background-color:white;z-index=10;position:absolute">
+		<div style=";padding:20px;border:thin solid black;box-shadow:inset 10px 10px 5px rgba(183,183,183,0.7)">
+   			<div layout="row" layout-align="space-between start" style="margin-top:40px">
+				<ng-include src="'/includes/metaData.html'">
+			</div>
+  		</div>
+	</div>
+</div>
+-->
+<div id="myTray2" style="position:relative">
+	<div class="slideable" id="meta" style="height:0;margin-left:20px;top:18px;background-color:white;z-index=10;position:absolute">
+		<div class="slideable-content" style="padding:20px;border:thin solid black;box-shadow:inset 10px 10px 5px rgba(183,183,183,0.7)">
+   			<div layout="row" layout-align="space-between start" style="margin-top:40px">
+				<ng-include src="'/includes/metaData.html'">
+			</div>
+  		</div>
+	</div>
+</div>
+
+<!--<div style="position:relative">
+	<div class="slideable" id="derp" style="visibility:hidden;box-shadow:inset 10px 10px 5px rgba(183,183,183,0.7);width:800px;top:8px;background-color:white;z-index=10;position:absolute">
+	<div style="border:thin solid black; padding:10px">
+   		<div flex-fill layout="row" layout-align="space-between start">
+			<h3>{{nRows}} people already exist in {{appName}} with that name</h3>
+			<md-button class="md-raised md-primary" layout="row" layout-align="center end" aria-label="Not Listed" ng-click="">
+					Not Listed
+				</md-button>
+  
+  			<md-button class="md-raised md-primary" layout="row" layout-align="center" end aria-label="Use Selected" ng-click="">
+					Use Selected
+				</md-button>
+		</div>
+		<p>Select (if any) the person you tried to add.</p>
+		<div layout="row" layout-align="center center">
+			<div flex="10"layout="row" layout-align="center center">Select</div>
+			<div flex layout="row" layout-align="center start">Name</div>
+			<div flex="15" layout="row" layout-align="center start">Birth Date</div>
+			<div flex="15" layout="row" layout-align="center start">Birth City</div>
+			<div flex="15" layout="row" layout-align="center start">Death Date</div>
+			<div flex="15" layout="row" layout-align="center start">Death City</div>
+		</div>
+		<div>
+	 		<md-radio-group ng-model="dupSelected" class="md-primary">
+				<div style="border:solid thin black" layout="row" layout-align="center center" ng-class-odd="'oddRow'" ng-class-even="'evenRow'" ng-repeat ="i in theDups">
+		        	<div style="padding-top:10px" flex="10" layout="row" layout-align="center center"><md-radio-button ng-value="$index"></md-radio-button></div>
+					<div flex layout="row" layout-align="center start">{{i.firstName}} {{i.lastName}}</div>
+					<div flex="15" layout="row" layout-align="center start">{{i.birthDate}}</div>
+					<div flex="15" layout="row" layout-align="center start">{{i.birthCity}}</div>
+					<div flex="15" layout="row" layout-align="center start">{{i.deathDate}}</div>
+					<div flex="15" layout="row" layout-align="center start">{{i.deathCity}}</div>
+				</div>
+	    	</md-radio-group>
+		</div>
+  	</div>
+	</div>
+	</div>-->
+
+		</form>
+		<div flex></div>
+		<div flex="20" layout="row" layout-align="end center">
+			  <div id="uploadProfile" ng-show="upload.step==2">
+			  	<form class="dropzone needsclick" novalidate>
+					<input type="hidden" ng-model="upload.personID" name="vm.personID">
+			
+					<div class="dz-message needsclick">
+				    	Drop a profile photo here for the newly added user.
+					</div>
+		
+				</form>
+			</div>
+			
+<!--			<div ng-show="upload.step==2" style="background-size:cover;background-image:url('sheet/profilePhotos/6120.jpeg');width:160px;height:120px"><div class="rotateText" style="font-size:24px;padding-left:20px;padding-top:20px">Upload<br>Succeeded</div></div>
+-->		</div>
+	</div>
+
+<!-- ***********************************************************************
+
+	 Birth and Death cards
+	 
+	 *********************************************************************** 
+-->
+	 
+	<div class="my-subcard" ng-show="upload.step==3" flex="90" layout-padding layout="row" layout-align="start center">
+		<form ng-submit="onSubmit2(birthDeath)" id="birthDeath" name="birthDeath" novalidate style="margin-top:-15px">
+			<fieldset>			
+				<legend>Birth</legend>
+<div style="width:800px">
+				<md-grid-list md-cols="5" md-gutter="20px" md-row-height="70px">
+  					<md-grid-tile>
+ 	 					    <md-radio-group ng-model="addBirth.gender">
+								<label>Gender</label>
+							    <md-radio-button value="0">Male</md-radio-button>
+							    <md-radio-button value="1">Female</md-radio-button>			
+					    	</md-radio-group>
+				  	</md-grid-tile>
+				  	
+				  	<md-grid-tile>
+					    	<label>Date&nbsp;Modifier</label>
+					        <md-select ng-change="onChange(addBirth.dateMod)" ng-model="addBirth.dateMod">
+		 						<md-option ng-value="item" ng-repeat="item in dateModifiers">{{item.label}}</md-option>
+					        </md-select>
+				  	</md-grid-tile>
+
+				  	<md-grid-tile md-colspan="3">
+					    <md-input-container ng-show="upload.modifier!='BET' && upload.modifier!='PHRASE'">
+				  			<label>Date</label>
+	   						<md-datepicker ng-model="ddBirth.date1"></md-datepicker>
+					    </md-input-container>
+
+					    <md-input-container ng-show="upload.modifier=='BET'" >
+	 			  			<legend>From Date</legend>
+	    					<md-datepicker ng-model="ddBirth.date1"></md-datepicker>
+					    </md-input-container>
+
+					    <md-input-container ng-show="upload.modifier=='BET'" >
+  	 			  			<legend>To Date</legend>
+ 							<md-datepicker ng-show="upload.modifier=='BET'" ng-model="ddBirth.date2"></md-datepicker>
+					    </md-input-container>
+
+				 		<md-input-container ng-show="upload.modifier=='PHRASE'" style="margin-top:25px">
+	  				 		<label>Date Phrase</label>
+							<input ng-model="ddBirth.datePhrase"></input>
+						</md-input-container>
+ 					</md-grid-tile>
+
+				  	<md-grid-tile>
+					 	<md-input-container>
+							<label>City</label>
+							<input type="text" ng-model="addBirth.city" name="birthCity" aria-label="Birth City" size="20">
+						</md-input-container>
+					</md-grid-tile>
+				  
+				  	<md-grid-tile>
+					 	<md-input-container>
+							<label>County</label>
+							<input type="text" ng-model="addBirth.county" name="birthCounty" aria-label="Birth County" size="20">
+						</md-input-container>
+					</md-grid-tile>
+				  
+				  	<md-grid-tile>
+						 <md-input-container>
+							<label>State</label>
+							<input type="text" ng-model="addBirth.state" name="birthState" aria-label="Birth State" size="20">
+						</md-input-container>
+					</md-grid-tile>
+				  
+					<md-grid-tile>
+					 	<md-input-container>
+							<label>Country</label>
+							<input type="text" ng-model="addBirth.country" name="birthCountry" aria-label="Birth Country" size="20">
+						</md-input-container>
+					</md-grid-tile>
+				  
+				  	<md-grid-tile>
+					 	<md-input-container>
+							<label>Hospital</label>
+							<input type="text" ng-model="addBirth.hospital" name="birthHospital" aria-label="Birth Hospital" size="20">
+						</md-input-container>
+					</md-grid-tile>
+				</md-grid-list>
+</div>			
+				<div class="md-toolbar-tools edit-tools" style="margin-top:20px">
+					<md-button id="toggleMeta" class="md-raised md-primary" slide-toggle="#meta2">
+						More
+					</md-button>
+
+					<md-button class="md-raised md-primary" ng-click="onReset2()">
+						Clear
+					</md-button>
+ 
+						<md-button  type="submit" class="md-raised md-primary" ng-disabled="birthDeath.$invalid">
+						Save
+					</md-button>
+				</div>
+					
+				<input type="hidden" ng-model="addUser.personID" name="personID">
+
+			</fieldset>
+
+<div id="myTray3" style="position:relative">
+	<div class="slideable" id="meta2" style="height:0;margin-left:20px;top:18px;background-color:white;z-index=10;position:absolute">
+		<div class="slideable-content" style="padding:20px;border:thin solid black;box-shadow:inset 10px 10px 5px rgba(183,183,183,0.7)">
+   			<div layout="row" layout-align="space-between start" style="margin-top:40px">
+				<ng-include src="'/includes/metaData.html'">
+			</div>
+  		</div>
+	</div>
+</div>
+
+		</form>
+	</div>
+	
+					
+<div class="dz-preview dz-file-preview" style="visibility:hidden;position:absolute;z-index:1000">
+  <div class="dz-details">
+    <div class="dz-filename"><span data-dz-name></span></div>
+    <div class="dz-size" data-dz-size></div>
+    <img data-dz-thumbnail />
+  </div>
+  <div class="dz-progress"><span class="dz-upload" data-dz-uploadprogress></span></div>
+  <div class="dz-success-mark"><span>✔</span></div>
+  <div class="dz-error-mark"><span>✘</span></div>
+  <div class="dz-error-message"><span data-dz-errormessage></span></div>
+</div>

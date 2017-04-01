@@ -1,0 +1,43 @@
+<!--  ******************************************************
+
+    Standard Place Picker, no styles, finished and tested 2/6/2017
+
+	 ******************************************************
+-->
+
+<md-grid-list md-cols="5" md-gutter="20px" md-row-height="70px">
+  	<md-grid-tile>
+	 	<md-input-container>
+			<label>City</label>
+			<input type="text" ng-model="vm.data.city" md-maxlength="20">
+		</md-input-container>
+	</md-grid-tile>
+  
+  	<md-grid-tile>
+	 	<md-input-container>
+			<label>County</label>
+			<input type="text" ng-model="vm.data.county" md-maxlength="20">
+		</md-input-container>
+	</md-grid-tile>
+  
+  	<md-grid-tile>
+		 <md-input-container>
+			<label>State</label>
+			<input type="text" ng-model="vm.data.state" md-maxlength="20">
+		</md-input-container>
+	</md-grid-tile>
+  
+	<md-grid-tile>
+	 	<md-input-container>
+			<label>Country</label>
+			<input type="text" ng-model="vm.data.country" md-maxlength="20">
+		</md-input-container>
+	</md-grid-tile>
+  
+  	<md-grid-tile>
+	 	<md-input-container>
+			<label>Details</label>
+			<textarea wrap="soft" ng-model="vm.data.details" md-maxlength="150"></textarea>
+		</md-input-container>
+	</md-grid-tile>
+</md-grid-list>

@@ -1,0 +1,54 @@
+<md-dialog>
+	<md-dialog-content> 
+	<form ng-submit="vm.onSubmit0()" novalidate>
+		<fieldset>			
+			<legend layout-padding>Database Entries Privacy Settings</legend>
+			<div layout="row" layout-align="start" style="width:900px">		
+		 	  	<div layout="column" layout-align="start" layout-padding style="width:400px">
+				  	<h3>Invoke&nbsp;Privacy&nbsp;for&nbsp;People:</h3>
+					<md-checkbox style="margin-left:8px" ng-model="vm.data.living" aria-label="Living">
+					 	Living
+					</md-checkbox>		
+					<div layout="row" layout-align="start">
+						<md-checkbox ng-model="vm.data.dead" aria-label="Deceased">
+						 	Deceased Less Than:
+						</md-checkbox>		
+						<md-slider aria-label="Year Deceased" style="margin-top:-12px;margin-left:10px" ng-disabled="!vm.data.dead" ng-model="vm.data.yearsDead" md-discrete round="0" step="10" min="10" max="150"></md-slider>
+						<span>{{vm.data.yearsDead}}</span>
+					</div>
+				</div>
+		 	  	<div layout="column" layout-align="start" layout-padding style="width:400px;border-left:thin solid black">
+				  	<h3>Except&nbsp;for&nbsp;Users:</h3>
+						<md-checkbox ng-model="vm.data.you" aria-label="You" ng-checked="true" ng-disabled="true">
+						 	You
+						</md-checkbox>		
+						<md-checkbox ng-model="vm.data.spoues" aria-label="Spouses">
+						 	Your Spouses
+						</md-checkbox>		
+						<md-checkbox ng-model="vm.data.parents" aria-label="Parents">
+						 	Your Parents
+						</md-checkbox>		
+						<md-checkbox ng-model="vm.data.children" aria-label="Children">
+						 	Your Children
+						</md-checkbox>		
+						<md-checkbox ng-model="vm.data.siblings" aria-label="Siblings">
+						 	Your Siblings
+						</md-checkbox>		
+						<md-checkbox ng-model="vm.data.groups" aria-label="Groups">
+						 	Interest Groups Created by You
+						</md-checkbox>		
+				</div>
+			</div>
+		</fieldset>
+	</form>
+	<p style="margin-left:20px">Note: All Settings can be overwritten for each item on data</p>
+	</md-dialog-content>
+	<md-dialog-actions>
+		<md-button class="md-raised md-primary" ng-click="vm.showPolicy()">
+			Policy
+		</md-button>
+		<md-button class="md-raised md-primary" ng-click="vm.closeDialog()">
+			Close
+		</md-button>
+	</md-dialog-actions>
+</md-dialog>

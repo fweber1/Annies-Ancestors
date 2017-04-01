@@ -1,0 +1,38 @@
+<div>
+	<md-content class="md-padding">
+		<h3>Send Text Message</h3>
+
+	<div layout="row" layout-align="start start">
+	<form action="http://www.txtdrop.com/send.php" method="POST" id="userForm" name="userForm">
+		 <input type="hidden" name="number" value="6z6qq84qk733">
+
+				 <md-input-container>
+				<label>Message</label>
+				<textarea name="body" ng-model="message" rows="3" cols="50" required md-maxlength="150"></textarea>
+				<div ng-messages="userForm.body.$error" ng-show="userForm.body.$dirty">
+				<div ng-message="required">This is required!</div>
+				<div ng-message="md-maxlength">That's too long!</div>
+				</div>
+				</md-input-container>	 			
+				
+				<md-button class="md-raised md-primary" aria-label="Communication" ng-disabled="vm.message">
+	 		Send
+	 			</md-button>
+	</form>
+			
+			<div style="text-align:center;margin-left:20px;width:300px">	 
+				<h3>Recipient List</h3>
+				<div id="receipents" class="receipent">
+					<md-list layout="column">
+						<md-list-item ng-repeat="item in vm.globalList">							
+							<div id="list{{$index}}" class="md-list-item-text">
+							<img class="avatar" back-Img-Comm="{{item.mainID}}">	
+							{{item.givenName}} {{item.middleName}} {{item.surname}}
+							 </div>
+					</md-list-item>
+					</md-list>	
+				</div>
+			</div> 
+		</div>
+</md-content>
+</div>

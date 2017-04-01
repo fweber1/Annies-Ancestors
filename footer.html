@@ -1,0 +1,14 @@
+<div id="nameDetail" ng-hide="true"></div>
+<div id="infoDetail" ng-hide="true"></div>
+   <md-toolbar class="footer md-primary" style="position:absolute;bottom:0;width:100%" layout="row" layout-align="space-between start" style="margin-top:-30px">
+	<div flex="33" id="article1"></div>
+	<div flex align="center" id="footerText">
+     	 &copy; 2016&mdash;{{vm.currentYear}}, {{vm.appName}}
+    </div>
+	<div flex="33" id="article2">		
+		<md-button ng-click="vm.showDLOG()" class="md-icon-button logo">
+			<i class="material-icons">info</i>
+		</md-button>
+	 </div>
+</md-toolbar>
+</html>

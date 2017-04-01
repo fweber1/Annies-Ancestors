@@ -1,0 +1,104 @@
+<!-- ***********************************************************************
+
+	 Assignment of family card
+	 
+	 *********************************************************************** 
+-->
+	 
+<div ng-cloak class="my-subcard" flex="90" layout-padding>
+	<section layout="row" layout-sm="column" layout-align="end center" layout-wrap>
+	  	<div layout="row" layout-align="start center" flex>
+			<legend>{{data.selectedType.label}} People Related to 
+				<span class="curUser" ng-dblClick="vm.showDetails6(vm.data.mainID)">
+				{{vm.data.fullName}}
+				</span>
+				<span style="color:teal" class="curUser"><i class="material-icons" ng-click="vm.searchPage1(vm.params.curPersonID,'main')">search</i></span>
+	   				<span class="curUser" ng-show="vm.data.other" ng-dblClick="vm.showDetails6(vm.data.mainID)" style="margin-left:50px;color:red">
+	   					This datum is owned by {{vm.data.ownerName}}. 
+	   					<i class="material-icons" style="color:black;margin-top:-5px">email</i>
+	    				<md-checkbox aria-label="send email"></md-checkbox>
+	   				</span>		
+			</legend>    
+			<span flex></span>
+	  	</div>
+		<span ng-click="vm.doDelete6()" style="color:teal" class="curUser"><i class="material-icons">delete</i></span>
+	</section>
+			
+			<div layout="row" layout-align="space-between start">
+				<div layout="column" layout-align="space-between center">
+					<h3>
+					Spouses			
+					<span style="color:teal" class="curUser"><i class="material-icons" ng-click="vm.searchPage4(vm.data.spouses[vm.data.curSpouse].mainID,'spouse')">search</i></span>
+					</h3>
+					<div layout="column">
+						<md-list>
+							  <md-list-item ng-repeat="item in vm.data.spouses" ng-dblClick="vm.showDetails6(item.mainID)" ng-class-odd="'odd'" ng-class-even="'even'">
+							      {{item.fullName}}
+							  </md-list-item>
+						</md-list>	
+					</div>
+				</div>			
+				
+				<div layout="column" layout-align="space-between center">
+					<h3>
+					Fathers			
+					<span style="color:teal" class="curUser"><i class="material-icons" ng-click="vm.searchPage4(vm.data.fathers[vm.data.curFther].mainID,'father')">search</i></span>
+					</h3>
+					<div layout="column">
+						<md-list>
+							  <md-list-item ng-repeat="item in vm.data.fathers" ng-dblClick="vm.showDetails6(item.mainID)" ng-class-odd="'odd'" ng-class-even="'even'">
+							      {{item.fullName}}
+							  </md-list-item>
+						</md-list>	
+					</div>
+				</div>
+				
+				<div layout="column" layout-align="center space-between">
+					<h3>
+					Mothers			
+					<span style="color:teal" class="curUser"><i class="material-icons" ng-click="vm.searchPage4(vm.data.mothers[vm.data.curMother].mainID,'mother')">search</i></span>
+					</h3>
+					<div layout="column">
+						<md-list>
+							  <md-list-item ng-repeat="item in vm.data.mothers" ng-dblClick="vm.showDetails6(item.mainID)" ng-class-odd="'odd'" ng-class-even="'even'">
+							      {{item.fullName}}
+							  </md-list-item>
+						</md-list>	
+					</div>
+				</div>
+				
+				<div layout="column" layout-align="space-between center">
+					<h3>
+					Children			
+					<span style="color:teal" class="curUser"><i class="material-icons" ng-click="vm.searchPage4(vm.data.children[0].mainID,'children')">search</i></span>
+					</h3>
+					<div layout="column">
+						<md-list>
+							  <md-list-item ng-repeat="item in vm.data.children" ng-dblClick="vm.showDetails6(item.mainID)" ng-class-odd="'odd'" ng-class-even="'even'">
+							      {{item.fullName}}
+							  </md-list-item>
+						</md-list>	
+					</div>
+				</div>
+				
+				<div layout="column" layout-align="space-between center">
+					<h3>
+					Others			
+					<span style="color:teal" class="curUser"><i class="material-icons" ng-click="vm.searchPage4(vm.data.others[v0].mainID,'others')">search</i></span>
+					</h3>
+ 					<div layout="column">
+						<md-list>
+							  <md-list-item ng-repeat="item in vm.data.others" ng-dblClick="vm.showDetails6(item.mainID)" ng-class-odd="'odd'" ng-class-even="'even'">
+							      {{item.fullName}}
+							  </md-list-item>
+						</md-list>	
+					</div>
+ 				</div>
+			</div>
+			<div ui-view="editFamilyButtons" autoscroll="false"></div>
+		</fieldset>
+		
+	</div>	
+<div ui-view="editFamilyInuseList" autoscroll="false"></div>
+<div ui-view="editFamilyShowEmail" autoscroll="false"></div>
+	

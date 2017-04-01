@@ -1,0 +1,89 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- build:css(.) styles/vendor.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/Materialize/bin/materialize.css" />
+    <link rel="stylesheet" href="bower_components/ng-notify/src/styles/ng-notify.css" />
+    <link rel="stylesheet" href="bower_components/ngToast/dist/ngToast.css" />
+    <link rel="stylesheet" href="bower_components/angular-loading-bar/build/loading-bar.css" />
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:css(.tmp) styles/chat.css -->
+    <link rel="stylesheet" href="styles/style.css">
+    <!-- endbuild -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    
+  </head>
+  <body ng-app="app">
+  <!-- Google Tag Manager -->
+  <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-PZWSZ2"height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-PZWSZ2');</script>
+  <!-- End Google Tag Manager -->
+  <a href="https://github.com/pubnub/angularjs-hubbub" target="_blank"><img style="position: absolute; top: 0; right: 0; border: 0; z-index: 50;" src="https://camo.githubusercontent.com/365986a132ccd6a44c23a9169022c0b5c890c387/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"></a>
+
+    <div id="main-view" ui-view></div>
+     <!-- <ui-view></ui-view> -->
+
+    <!-- build:js(.) scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/Materialize/bin/materialize.js"></script>
+    <script src="bower_components/pubnub/web/dist/pubnub.min.js"></script>
+    <script src="bower_components/pubnub-angular/dist/pubnub-angular.min.js"></script>
+    <script src="bower_components/lodash/lodash.js"></script>
+    <script src="bower_components/ng-notify/src/scripts/ng-notify.js"></script>
+    <script src="bower_components/satellizer/satellizer.js"></script>
+    <script src="bower_components/particles.js/particles.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="bower_components/ngToast/dist/ngToast.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="bower_components/angular-loading-bar/build/loading-bar.js"></script>
+    <script src="bower_components/push.js/push.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+
+        <!-- build:js({.tmp,app}) scripts/scripts.js -->
+        <script src="app.js"></script>
+        <script src="app.routes.js"></script>
+        <script src="constants.config.js"></script>
+        <script src="app.config.js"></script>
+            
+        <script src="services/authentication.service.js"></script>
+        <script src="services/current_user.service.js"></script>
+        <script src="services/conversation-list.service.js"></script>
+        <script src="services/conversations.service.js"></script>
+        <script src="services/notifications.service.js"></script>
+
+        <script src="services/friends.service.js"></script>
+        <script src="services/typing-indicator.service.js"></script>
+        <script src="services/users-typing.service.js"></script>
+
+        
+        <script src="shared/user-avatar.directive.js"></script>
+        <script src="shared/repeat-complete.directive.js"></script>
+
+        <script src="components/login/sign-in-with-github-button.directive.js"></script>
+        <script src="components/conversation/conversation.directive.js"></script>
+        <script src="components/conversation/conversation_name_direct.directive.js"></script>
+        <script src="components/conversation/conversation_name_channel.directive.js"></script>
+        
+        <script src="components/message-form/message-form.directive.js"></script>
+        <script src="components/message-form/type-tracking.directive.js"></script>
+        <script src="components/channels/channels.directive.js"></script>
+        <script src="components/message-list/message-list.directive.js"></script>
+        <script src="components/message-item/message-item.directive.js"></script>
+        <script src="components/typing-indicator-box/typing-indicator-box.directive.js"></script>
+        <script src="components/friend-list/friend-list.directive.js"></script>
+        <script src="components/friends-search-box/friends-search-box.directive.js"></script>
+        <script src="components/user-menu/user-menu.directive.js"></script>
+        
+
+        <!-- endbuild -->
+</body>
+</html>

@@ -1,0 +1,19 @@
+.main.ng-enter {
+  	opacity: 0;
+    transition:opacity 1s ease-in-out;
+}
+
+.main.ng-enter-active {
+  	opacity: 1;
+    transition:opacity 1s ease-in-out;
+}
+
+.main.ng-leave {
+  	opacity: 1; 
+    transition:opacity 1s ease-in-out;
+}
+
+.main.ng-leave-active {
+  	opacity: 0;
+    transition:opacity 1s ease-in-out;
+}

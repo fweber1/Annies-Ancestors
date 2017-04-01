@@ -1,0 +1,78 @@
+<div style="margin-left:20px">
+	<md-content class="md-padding">
+		
+ <form ng-submit="vm.getPeople()" name="vm.searchForm" id="searchForm">
+		<div layout-gt-sm="row" layout="row" layout-align="start start">
+			
+			<md-checkbox ng-disabled="vm.soundexDisabled" name="soundex" ng-model="vm.soundex" aria-label="Sounds Like">
+			Include surnames that sound like the entered name
+			</md-checkbox>
+			
+		<md-checkbox ng-click="vm.setAdvanced()" ng-model="vm.cntrlFlags.advancedSearch" aria-label="Advanced Search">
+		Limit search to people interested in {{vm.fullName}}
+		</md-checkbox>
+		</div>
+ 
+		<div ng-hide="vm.cntrlFlags.advancedSearch" layout="row" layour-align="start start">
+		 	<md-input-container md-autofocus class="md-input-focused">
+				<label>Enter Surname to Search For</label>
+				<input ng-keyup="vm.checkSurname($event)" id="surname" ng-attr-autofocus="{{vm.cntrlFlags.focusinControl}}" type="text" ng-model="vm.surname" name="surname" aria-label="surname" required size="30">
+					<div ng-messages="searchForm.surname.$error">
+						<div ng-message="required">This is required!</div>
+					</div>
+			</md-input-container>
+			
+			<md-button type="submit" ng-disabled="searchForm.$invalid" class="md-raised md-primary" style="height:25px" aria-label="Search">
+				Search
+			</md-button>							
+		</div>
+		<div ng-show="vm.cntrlFlags.showTable">
+			<md-button class="md-raised md-primary" aria-label="Clear Filters" ng-click="vm.clearFilters();">
+				Clear Filters
+			</md-button>							
+
+			<span>Number of Matches: {{vm.tableParams.total()}}</span>
+									
+		</div>
+</form>
+
+	<div class="transformable" ng-show="vm.cntrlFlags.showTable" layout="row" layout-align="start start">	
+		<div flex="70">		
+			<table ng-table="vm.tableParams"class="table table-bordered" show-filter="true">
+			<tr ng-dblClick="vm.showPeople(user.mainID)" id="drag{{$index}}" droppable drop="vm.receipentDrop" draggable="true" class="transformable" ng-repeat="user in $data">
+				<td title="Avatar"><img class="avatar" back-Img-Comm="{{user.mainID}}"></td>
+				<td title="'Name'" filter="{ surname: 'text', surname: '/filters/all.html'}" sortable="'≈'">
+					<p>{{user.givenName}}&nbsp;{{user.surname}}<p></td>
+			<td title="'Current&nbsp;City'" filter="{ curCity: 'text', curCity: '/filters/all.html'}" sortable="'curCity'">
+			 <p> {{user.curCity}}<p></td>
+			<td title="'Current&nbsp;State'" filter="{ curState: 'text', curState: '/filters/all.html'}" sortable="'curState'">
+			 <p> {{user.curState}}<p></td>
+			<td title="'Interested&nbsp;In'">
+			<p>{{user.curState}}<p></td>
+			</tr>
+			</table>
+		</div>
+	
+		<div flex ng-show="vm.cntrlFlags.showTable" style="text-align:center;margin-left:20px;width:600px">	 
+			<md-button class="md-raised md-primary" aria-label="Create Group" ng-click="vm.createGroup();">
+				Create Group
+			</md-button>							
+			<h3>Selected List</h3>
+			<div class="{{vm.cntrlFlags.dropClass}}" id="dropArea" droppable drop="vm.peopleDrop">
+				<div ng-if="vm.cntrlFlags.showListText">
+					Drag and drop names between the table and here to create the list of perople with whom to communicate.
+				</div>
+				<md-list layout="column">
+					<md-list-item ng-repeat="item in vm.globalList">							
+						<div ng-dblClick="vm.showDetails($index)" id="list{{$index}}" class="md-list-item-text" draggable="true">
+						<img class="avatar" back-Img-Comm="{{item.mainID}}">	
+						{{item.givenName}} {{item.middleName}} {{item.surname}}
+						 </div>
+				</md-list-item>
+				</md-list>	
+			</div>
+		</div> 
+		<table ng-hide="true"><tr id="tempDrop"></tr></table>
+	</div>
+</md-content>
+</div>

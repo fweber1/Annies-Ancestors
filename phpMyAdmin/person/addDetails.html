@@ -1,0 +1,71 @@
+<div class="check-element animate-show">	
+
+	<div style="border:thin solid black">
+
+	<md-toolbar class="md-accent page-header">
+			<div flex flex-fill layout="row" layout-align="center center">Add Detailed Information for {{fullName}}</div>
+		</md-toolbar>
+		
+		<md-content>
+ 
+    <md-tabs md-dynamic-height md-border-bottom>
+      <md-tab label="Military">
+        <md-content class="md-padding">
+          <h1 class="md-display-2">Military</h1>
+          <p>Details on military background goes here</p>
+        </md-content>
+      </md-tab>
+      <md-tab label="Events">
+        <md-content class="md-padding">
+          <h1 class="md-display-2">Statistics</h1>
+          <p>Things like marriage, kids, degrees, etc. goes here</p>
+        </md-content>
+      </md-tab>
+      <md-tab label="Attributes">
+        <md-content class="md-padding">
+          <h1 class="md-display-2">Personal</h1>
+          <p>Description and other physical attributes</p>
+ 			<md-card>	
+				<div layout-padding>
+	 					<div class="dropBox" ng-show="fullName!=''">
+							Drop a photo here to use as a profile photo for {{fullName}}.
+						</div>
+						<div class="dropBox" ng-show="fullName==''">
+							Drop a photo here to use as a profile photo.
+						</div>
+	<!--					<md-radio-group ng-model="profileItem">
+						<md-virtual-repeat-container id="horizontal-container" md-orient-horizontal style="height:120px;width:360px">
+	 						<div md-virtual-repeat="profile in profiles" md-item-size="55" class="repeated-item" flex>
+								
+								<img ng-src="{{profile}}" width="55px" height="70px">
+								<div ng-show="profileType=='one'">
+									<md-radio-button aria-label="Select a Photo" class="md-primary"></md-radio-button>
+								</div>
+							</div> 
+						</md-virtual-repeat-container>
+						</md-radio-group>
+						<div style="padding-left:20px">
+						<md-radio-group ng-model="profileType">
+							<md-radio-button value="one" class="md-primary">Select a single profile photo for use</md-radio-button>
+      						<md-radio-button value="many" class="md-primary"> Select multiple profile photos (display based on age)</md-radio-button>
+   						</md-radio-group>
+						</div>
+-->       
+     		</md-card>
+       </md-content>
+      </md-tab>
+      <md-tab label="Religion">
+        <md-content class="md-padding">
+          <h1 class="md-display-2">Religion</h1>
+          <p>Religious details</p>
+        </md-content>
+      </md-tab>
+      <md-tab label="Relationships">
+        <md-content class="md-padding">
+          <h1 class="md-display-2">Relationships</h1>
+          <p>Family and Friend Relationships</p>
+        </md-content>
+      </md-tab>
+    </md-tabs>
+  </md-content>
+</div>

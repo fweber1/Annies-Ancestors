@@ -1,0 +1,49 @@
+<!--  ******************************************************
+
+    Add name view, no styles, finished and tested 2/6/2017
+
+	 ******************************************************
+-->
+
+<md-grid-list md-cols="6" md-gutter="20px" md-row-height="70px">
+	  	<md-grid-tile>
+		<md-input-container>
+			<label>Name Prefix</label>
+			<input type="text" ng-model="vm.data.namePrefix" md-maxlength="7">
+		</md-input-container>
+  	</md-grid-tile>
+
+	  	<md-grid-tile>
+	 	<md-input-container>
+			<label>Given Name</label>
+			<input type="text" ng-model="vm.data.givenName" md-maxlength="20">
+		</md-input-container>
+  	</md-grid-tile>
+
+  	<md-grid-tile>
+	 	<md-input-container>
+			<label>Middle Name</label>
+			<input type="text" ng-model="vm.data.middleName" md-maxlength="20">
+		</md-input-container>
+  	</md-grid-tile>"edit/templates/name.view (original 2).html"
+
+	  <md-grid-tile>
+		<md-input-container md-autofocus  class="md-input-focused">
+			<label>Last Name</label>
+			<input type="text" ng-model="vm.data.surname" required md-maxlength="20">
+		</md-input-container>
+  	</md-grid-tile>
+
+  	<md-grid-tile>
+		<md-input-container>
+			<label>Name Suffix</label>
+			<input type="text" ng-model="vm.data.nameSuffix" md-maxlength="7">
+		</md-input-container>
+  	</md-grid-tile>
+
+  	<md-grid-tile> 
+		<label>Gender</label>
+			    <input type="radio" ng-model="vm.data.gender" name="gender" value="M">Male1</md-radio-button>
+			    <input type="radio" ng-model="vm.data.gender" name="gender" value="F">Female</md-radio-button>			
+ 	</md-grid-tile>
+</md-grid-list>
