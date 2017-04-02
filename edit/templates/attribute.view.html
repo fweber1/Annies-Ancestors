@@ -1,30 +1,31 @@
 <!-- ***********************************************************************
 
 	 Event card finished, no styles, 2/6/2017
-	 
-	 *********************************************************************** 
+
+	 ***********************************************************************
 -->
-	 
-<div ng-cloak class="my-subcard" flex="90" layout-padding>
+
+<!--suppress HtmlUnknownAttribute -->
+<div ng-cloak flex="90" layout-padding>
 	<section layout="row" layout-sm="column" layout-align="end center" layout-wrap>
 	  	<div layout="row" layout-align="start center" flex>
-			<legend>{{data.selectedType.label}} Data for 
+			<legend>{{data.selectedType.label}} Data for
 				<span class="curUser" ng-dblClick="vm.showDetails2(vm.data.mainID)">
 				{{vm.data.fullName}}
 				</span>
 				<span style="color:teal" class="curUser"><i class="material-icons" ng-click="vm.searchPage2(vm.params.curPersonID,'main')">search</i></span>
-			</legend>    
+			</legend>
 			<span flex></span>
 	  	</div>
 		<span layout-padding ng-click="vm.doAdd2()" style="color:teal" class="curUser"><i class="material-icons">person_add</i></span>
 		<span ng-click="vm.doDelete2()" style="color:teal" class="curUser"><i class="material-icons">delete</i></span>
 	</section>
-	
+
 	<section layout="row" layout-sm="column" layout-align="end end" layout-wrap>
 	  	<div layout="row" layout-align="start center" flex>
 			<form ng-submit="vm.onSubmit2()" id="theForm2" novalidate>
 		  		<div layout="column" layout-align="end start">
-		  							
+
 					<div layout-padding layout="column">
 			 			<div ui-view="editAttributesDates" autoscroll="false"></div>
 						<div layout="row">
@@ -32,16 +33,17 @@
 						</div>
 					</div>
 				</div>
-			</form>			
+			</form>
 			<span flex></span>
 		</div>
-		<md-input-container layout-padding flex style="padding-right:20px">
+		<!--suppress HtmlUnknownTag -->
+        <md-input-container layout-padding flex style="padding-right:20px">
 			<label>Details</label>
 			<textarea max-rows="13" wrap="soft" ng-model="vm.data.details.details" md-maxlength="700"></textarea>
 		</md-input-container>
 	</section>
 	<div ui-view="editAttributesButtons" autoscroll="false"></div>
 </div>
-		
+
 <div ui-view="editAttributesInuseList" autoscroll="false"></div>
 <div ui-view="editAttributesShowEmail" autoscroll="false"></div>
