@@ -3,35 +3,35 @@
 (function () {
     'use strict';
 
- angular
+ angular // jshint ignore:line
     .module('root')
-    
-    .factory('EditFactory', function($state, UtilityFactory, Gparams) {
+
+    .factory('EditFactory', function() {
 
     	var _curPerson;
-    	var _theData;   	
-  	
+    	var _theData;
+
 		return {
 
 // public functions
-	       
+
 			getCurPerson: function() {
 				return _curPerson;
 			},
-		       
+
 			setCurPerson: function(person) {
 				_curPerson = person;
 			},
-			
+
 			getData: function() {
 				return _theData;
 			},
-		       
+
 			setData: function(theData) {
 				_theData = theData;
-			},
+			}
 
-		}
-		
+		};
+
 	});
 })();
